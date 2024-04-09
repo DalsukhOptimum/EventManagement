@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div *ngIf="EventData">
+        <h2 style="text-align: center;margin-bottom: 21px;margin-top: 21px;"> Events </h2>
+        <table class="table table-bordered tb-custom">
+            <thead>
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">EventName</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">StartDate</th>
+                    <th scope="col">EndDate</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let obj of EventData;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{obj.Name}}</td>
+                    <td>{{obj.Description}}</td>
+                    <td>{{obj.StartDate}}</td>
+                    <td>{{obj.EndDate }} </td>
+                   <td>  <button type="button" class="Item" Id="Add-Event" (click)=" viewmore(i)" >show more</button></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+        </div>
+
+</body>
+
+</html>

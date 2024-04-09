@@ -1,0 +1,53 @@
+<!-- <input type="file" name="" id="ok" (change) = "submit($event)"> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://www.turnjs.com/lib/turn.min.js "></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div *ngIf="EventData" class="container">
+        <h2 class="heading">Publish</h2>
+        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+
+
+            <div class="form-group">
+                <label for="EventId">EventId</label>
+                <select class="form-control" id="EventId" formControlName="EventId">
+                    <option value="">Select Event</option>
+                    <option *ngFor="let obj of EventData" value={{obj.EventId}}>{{obj.Name}}</option>
+
+                </select>
+                <div *ngIf="userForm?.get('EventId')?.invalid && submitetd" class="text-danger">
+                    select Event
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+        </form>
+        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+
+    </div>
+  
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

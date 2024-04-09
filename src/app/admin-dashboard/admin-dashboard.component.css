@@ -1,0 +1,31 @@
+.sidebar{
+    width: 20%;
+    height: 100vh;
+    background-color: aliceblue;
+    
+}
+.Componentdata{
+    width: 80%;
+    height: 80vh;
+}
+
+.box{
+    display: flex;
+}
+.Item{
+    margin: 10px;
+    margin-left: 50px;
+    border: none;
+    display: flex;
+  
+    background-color: none;
+}
+.Child
+{
+    padding: 10px;
+
+    
+}
+button{
+    background-color:aliceblue;
+  }

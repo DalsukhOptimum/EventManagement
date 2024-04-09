@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+    <div class="sidebar">
+        <div class="Child">
+            <button type="button" class="Item" Id="Add-Event" (click)="submit('Add-Event')">Add Event</button>
+        </div>
+       <div class="Child">
+        <button type="button" class="Item" Id="Add-Activity" (click)="submit('Add-Activity')">Add Activity</button>     
+       </div>
+       
+       <div class="Child">
+        <button type="button" class="Item" Id="Add-Add-Price" (click)="submit('Add-Price')">Add Price</button>
+       </div>
+        
+       <div class="Child">
+        <button type="button" class="Item" Id="Publish" (click)="submit('Publish')">Publish</button>
+       </div>
+        
+        
+    </div>
+
+<div class="Componentdata">
+<app-add-event *ngIf="ComponentName == 'Add-Event'"></app-add-event>
+<app-add-activity *ngIf="ComponentName =='Add-Activity'"></app-add-activity>
+<app-add-price *ngIf="ComponentName == 'Add-Price'"></app-add-price>
+<app-publish *ngIf="ComponentName == 'Publish'"></app-publish>
+
+</div>
+</div>
+</body>
+</html>
