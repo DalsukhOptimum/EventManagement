@@ -1,12 +1,14 @@
 .sidebar{
     width: 20%;
-    height: 100vh;
+   min-height: 100vh;
     background-color: aliceblue;
+    border-right: 2px solid rgb(35, 197, 70);
     
 }
 .Componentdata{
     width: 80%;
-    height: 80vh;
+    /* height: 80vh; */
+    /* background-color: rgb(15, 153, 26); */
 }
 
 .box{
@@ -23,9 +25,21 @@
 .Child
 {
     padding: 10px;
+    border-bottom: 1px solid rgb(35, 197, 70);
 
     
 }
 button{
     background-color:aliceblue;
+
+  }
+
+  .component{
+    background-color: #bbc0c5;
+  }
+
+  .my-component{
+    position: sticky; 
+    left: 269px;
+    top: 58px;
   }

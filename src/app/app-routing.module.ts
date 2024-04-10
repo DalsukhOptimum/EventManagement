@@ -11,6 +11,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserEventsComponent } from './user-events/user-events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { MyAuthGuard } from './my-auth.guard';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
 
 const routes: Routes = [
 {
@@ -39,6 +40,9 @@ const routes: Routes = [
 },
 {
   path:"Event-Detail",component:EventDetailsComponent, canActivate:[MyAuthGuard],data: { role: 'User' }
+},
+{
+  path:"Admin-Event",component:AdminEventsComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
 }
 
 ];

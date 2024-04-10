@@ -86,6 +86,9 @@ export class AddPriceComponent {
        }
        else{
          this.Message = data.Message;
+         this.userForm.reset(this.userForm.value);
+         this.userForm.reset();
+      
        }
      },
      Error:(err:Error)=>
@@ -129,6 +132,7 @@ export class AddPriceComponent {
            this.Message = data.Message;
            this.userForm.reset();
            this.submitetd = false ;
+           
          
        },
        Error:(err:Error)=>

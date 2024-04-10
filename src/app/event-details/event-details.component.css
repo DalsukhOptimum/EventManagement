@@ -5,3 +5,23 @@
     
     
 }
+body{
+    margin: 50px;
+}
+.description{
+    border: 2px solid rgb(40, 236, 99);
+ 
+    height: auto;
+    width: 500px;
+    /* margin-left: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px; */
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+   
+    
+}

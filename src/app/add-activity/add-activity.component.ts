@@ -4,6 +4,7 @@ import { EventEntity } from '../Models/EventEntity';
 // import { FormBuilder, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivityEntity } from '../Models/ActivityEntity';
+import { startWith } from 'rxjs';
 
 @Component({
   selector: 'app-add-activity',
@@ -15,11 +16,32 @@ export class AddActivityComponent {
    Response!:string ;
    Message!:string ;
    submitetd!:any ;
+   min!:any;
+   max!:any;
   EventData!:EventEntity[]
   userForm: any;
+  regex = new RegExp("^[a-zA-Z ]+$");
       constructor( private service:APICallService,private formBuilder: FormBuilder)
       {
         
+      }
+
+
+      chnageevent()
+      {
+        let Id  = this.userForm.value.EventId ;
+       
+        this.EventData.forEach(element => {
+          if(element.EventId == Id)
+            {
+              this.min = element.StartDate.toString().substring(0,10).split('-').reverse().join('-')+"T00:00";
+              this.max = element.EndDate.toString().substring(0,10).split('-').reverse().join('-')+"T00:00";
+            }
+        });
+       
+       console.log("this is start",this.min);
+       console.log("this is end",this.max);
+
       }
 
 
@@ -56,7 +78,7 @@ export class AddActivityComponent {
 
         this.userForm = this.formBuilder.group({
           EventId:['', Validators.required],
-          Name: ['', Validators.required],
+          Name: ['', [Validators.required,Validators.pattern(this.regex)]],
           Description: ['', Validators.required],
           StartDate: ['', Validators.required],
           EndDate: ['', Validators.required],
@@ -71,19 +93,7 @@ export class AddActivityComponent {
         console.log(this.userForm.value);
         console.log(this.userForm.value.Image);
     
-        //this.userForm.Email = this.route.snapshot.paramMap.get('Id')?.slice(1)!;
-      //   console.log(this.route.snapshot.paramMap.get('Id'));
-      //   console.log(this.userForm.value);
-      // console.log( this.route.snapshot.paramMap.get('Id')?.slice(1));
-      //    this.Ex.Amount = this.userForm.Amount;
-      //    this.Ex.Comment = this.userForm.Comment;
-      //    this.Ex.CreditOrDebit = this.userForm.CreditOrDebit;
-        // this.Ex.Email=  this.route.snapshot.paramMap.get('Id')?.slice(1);
-      //   console.log( this.route.snapshot.paramMap.get('Id')?.slice(1));
-      //  this.ex.Comment = this.userForm.Comment;
-      //  this.ex.Amount = this.userForm.Amount ;
-      //   this.ex.CreditOrDebit = this.userForm.CreditOrDebit ;
-      //   this.ex.Email = this.route.snapshot.paramMap.get('Id')?.slice(1)!;
+   
     
        
     
@@ -95,18 +105,29 @@ export class AddActivityComponent {
     at.EndDate = this.userForm.value.EndDate
     at.Name = this.userForm.value.Name
     at.EventId = this.userForm.value.EventId
-    // const at = new ActivityEntity(
-    //   0,
-    //   this.userForm.value.Name,
-    //   // this.route.snapshot.paramMap.get('Id')?.slice(1)!,
-    //   this.userForm.value.Description,
-    //   this.userForm.value.StartDate,
-    //   this.userForm.value.EndDate,
-    //   0,
-    //   this.userForm.value.EventId ,
-    //   "ok"
-      
-    // ) 
+   
+
+    
+    let startYear:number = this.userForm.value.StartDate.substring(0,4);
+    let startMonth:number = this.userForm.value.StartDate.substring(5,7);
+    let startDate:number = this.userForm.value.StartDate.substring(8,10);
+    console.log(startMonth);
+
+    
+    let endtYear:number = this.userForm.value.EndDate.substring(0,4);
+    let endtMonth:number = this.userForm.value.EndDate.substring(5,7);
+    let endtDate:number = this.userForm.value.EndDate.substring(8,10);
+    console.log(endtMonth);
+
+    if( ((startDate >endtDate) && (startMonth <= endtDate) && (startYear <= endtYear)) || ((startMonth > endtMonth) && (startYear >= endtYear)))
+      {
+        console.log("aaya chhu");
+        this.userForm.get('EndDate').setErrors(null);
+        this.userForm.get('StartDate').setErrors(null);
+        this.userForm.get('EndDate').setErrors({InvalidDateRange:true});
+      }
+
+   
       
     
     

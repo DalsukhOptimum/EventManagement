@@ -17,6 +17,7 @@
 
     <div *ngIf="EventData" class="container">
         <h2 class="heading">Add Price</h2>
+        <hr style="color: rgb(19, 128, 122);">
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
 
         
@@ -37,7 +38,7 @@
 
 
                 <div class="form-group">
-                    <label for="ActivityId">ActivityId</label>
+                    <label for="ActivityId">Activity</label>
                     <select class="form-control" id="ActivityId" formControlName="ActivityId">
                         <option value="">Select Type</option>
                         <option *ngFor="let obj of ActivityData" value={{obj.ActivityId}}>{{obj.Name}}</option>
@@ -60,16 +61,18 @@
 
             </div>
 
-            <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+            <div *ngIf="Message" class="Message mt-3" ><b> {{Message}}</b>
 
             </div>
         </form>
     </div>
 
-
-
-
-
+    <div *ngIf="!EventData">
+        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> do not have any Events</b>
+         
+        </div>
+    </div>
+    
 </body>
 
 </html>

@@ -19,8 +19,20 @@ export class PublishComponent {
   }
 
   ngOnInit(): void {
+    
+   this.getEvents();
+    this.userForm = this.formBuilder.group({
+      EventId: ['', Validators.required],
+    });
+
+
+  }
+
+  getEvents()
+  {
     this.Message = null;
 
+    
     let obj = {
       Flag: "AdminEvents"
     }
@@ -43,12 +55,6 @@ export class PublishComponent {
         }
 
       });
-
-    this.userForm = this.formBuilder.group({
-      EventId: ['', Validators.required],
-    });
-
-
   }
 
   submitForm(): void {

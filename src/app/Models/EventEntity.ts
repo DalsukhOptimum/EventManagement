@@ -7,6 +7,7 @@ export class EventEntity {
     Image!:string;
     Flag!:string
     ImageType!:string 
+    
   
 //     constructor(EventId:number,Name:string,Description:string,StartDate:string,EndDate:number,Image:string,Flag:string)
 //     {

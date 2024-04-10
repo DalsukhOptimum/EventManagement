@@ -13,7 +13,7 @@
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
     
             <div class="form-group">
-                <label for="Flag">Flag</label>
+                <label for="Flag">Role</label>
                 <select class="form-control" id="Flag" formControlName="Flag">
                   <option value="" >Select Type</option>
                   <option value="UserLogin">User Login</option>
@@ -25,9 +25,12 @@
           <div class="form-group">
             <label for="Email">Email</label>
             <input type="email" class="form-control" id="Email" formControlName="Email">
-            <div *ngIf="userForm?.get('Email')?.invalid && submitted" class="text-danger">
-              Please enter a valid email.
-            </div>
+            <div *ngIf="userForm?.get('Email').errors?.required && submitted" class="text-danger">
+              Email is Required 
+             </div>
+             <div *ngIf="userForm?.get('Email').errors?.pattern && submitted" class="text-danger">
+              Please Enter valid Email 
+              </div>
           </div>
 
           <div class="form-group">

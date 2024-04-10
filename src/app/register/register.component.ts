@@ -32,7 +32,7 @@ export class RegisterComponent {
   }
 
   submitForm(): void {
-    debugger
+   
     this.submitted = true ;
     console.log("i am in submit form");
     let body = {

@@ -17,13 +17,14 @@
 
     <div *ngIf="EventData" class="container">
         <h2 class="heading">Publish</h2>
+        <hr style="color: rgb(19, 128, 122);">
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
 
 
             <div class="form-group">
                 <label for="EventId">EventId</label>
-                <select class="form-control" id="EventId" formControlName="EventId">
-                    <option value="">Select Event</option>
+                <select class="form-control" id="EventId" formControlName="EventId" (change)="getEvents()">
+                    <option value="" disabled>Select Event</option>
                     <option *ngFor="let obj of EventData" value={{obj.EventId}}>{{obj.Name}}</option>
 
                 </select>
@@ -37,11 +38,17 @@
 
 
         </form>
-        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+        <div *ngIf="Message" class="Message mt-3" ><b> {{Message}}</b>
+
+        </div>
+
 
     </div>
-  
 
+    <div *ngIf="!EventData">
+        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+
+        </div>
     </div>
 
 

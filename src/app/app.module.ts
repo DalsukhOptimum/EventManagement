@@ -15,6 +15,7 @@ import { PublishComponent } from './publish/publish.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UserEventsComponent } from './user-events/user-events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EventDetailsComponent } from './event-details/event-details.component';
     PublishComponent,
     AdminDashboardComponent,
     UserEventsComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    AdminEventsComponent
   ],
   imports: [
     BrowserModule,
