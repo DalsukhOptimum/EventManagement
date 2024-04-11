@@ -20,6 +20,13 @@ export class AdminEventsComponent {
   }
 
   ngOnInit(): void {
+    this.EventFetch();
+
+
+  }
+
+  EventFetch()
+  {
     this.Message = null;
 
     let obj = {
@@ -47,13 +54,43 @@ export class AdminEventsComponent {
       });
 
 
-
-
   }
 
   Delete(EventId:any)
   {
-    
+    let obj = {
+      EventId:EventId,
+      Flag: "DeleteEvent"
+    }
+    this.service.callMethod('PublishOrAddPrice', obj).subscribe(
+      {
+        next: (data: any) => {
+          if (data.ID != 0) {
+            this.EventFetch();
+          //  this.EventData = data.ArrayOfResponse;
+
+
+            console.log(data);
+
+          }
+          else {
+            alert(data.Message);
+          //  this.Message = data.Message;
+          }
+        },
+        Error: (err: Error) => {
+          window.alert("ENTER VALID credetails");
+
+        }
+
+      });
+  }
+
+  Update(Index:any)
+  {
+    this.service.EventDataService = this.EventData[Index];
+
+    this.service.ComponentName = 'Update-Event'
   }
 
 

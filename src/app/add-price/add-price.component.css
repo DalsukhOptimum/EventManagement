@@ -1,0 +1,15 @@
+.Previous{
+    margin-top: 5px;
+    margin-left:5px ;
+    float:left;
+}
+
+.Next{
+    margin-top: 5px;
+    margin-right: 5px;
+    float: right;
+}
+
+.custom{
+    margin-left: 500px;
+}

@@ -23,11 +23,11 @@
         <label for="Name">Name</label>
         <input type="text" class="form-control" id="Name" formControlName="Name">
         <div *ngIf="userForm?.get('Name').errors?.required && submitetd" class="text-danger">
-         Name is Required 
+          Name is Required
         </div>
         <div *ngIf="userForm?.get('Name').errors?.pattern && submitetd" class="text-danger">
-         Please wrte valid name
-         </div>
+          Please wrte valid name
+        </div>
       </div>
 
 
@@ -47,48 +47,56 @@
         <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
           Please start date
         </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="EndDate">EndDate</label>
+        <input type="datetime-local" id="EndDate" formControlName="EndDate">
+        <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
+          Please end date
         </div>
 
-
-
-        <div class="form-group">
-          <label for="EndDate">EndDate</label>
-          <input type="datetime-local" id="EndDate" formControlName="EndDate">
-          <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
-            Please end date
-          </div>
-
-          <div *ngIf="userForm?.get('EndDate').errors?.InvalidDateRange && submitetd" class="text-danger">
-            Please select valid startdate and End date
-          </div>
+        <div *ngIf="userForm?.get('EndDate').errors?.InvalidDateRange && submitetd" class="text-danger">
+          Please select valid startdate and End date
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="Image">Image</label>
-          <input type="file" id="Image" formControlName="Image" (change)="submit($event)" formControlName="Image">
-          <div *ngIf="userForm?.get('Image').errors?.required && submitetd" class="text-danger">
-            Please Upload Image
-          </div>
-          <div *ngIf="userForm?.get('Image').errors?.invalidTye && submitetd" class="text-danger">
-            Please select valid Image type
-          </div>
-          <div *ngIf="userForm?.get('Image').errors?.sizeExceeded && submitetd" class="text-danger">
-            Please upload image below 500kb
-          </div>
+      <div class="form-group">
+        <label for="Image">Image</label>
+        <input type="file" id="Image" formControlName="Image" (change)="submit($event)" formControlName="Image">
+        <div *ngIf="userForm?.get('Image').errors?.required && submitetd" class="text-danger">
+          Please Upload Image
         </div>
-
-
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-        <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
-
+        <div *ngIf="userForm?.get('Image').errors?.invalidTye && submitetd" class="text-danger">
+          Please select valid Image type
         </div>
+        <div *ngIf="userForm?.get('Image').errors?.sizeExceeded && submitetd" class="text-danger">
+          Please upload image below 5000kb
+        </div>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-success custom">Submit</button>
+
+      <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
+
+      </div>
+
+
     </form>
+
   </div>
 
+<div class="Child">
+    <button type="button" class="btn btn-info" (click)="this.service.ComponentName='default'">Previous</button>
+</div>
 
-
+<div class="Next">
+  <button type="button" (click)="this.service.ComponentName='Add-Activity'" class="btn btn-info">Next</button>
+</div>
 
 
 </body>

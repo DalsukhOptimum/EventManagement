@@ -19,7 +19,7 @@ export class AddPriceComponent {
        haveActivity:boolean = false ;
       
 
-       constructor( private service:APICallService,private formBuilder: FormBuilder)
+       constructor( public service:APICallService,private formBuilder: FormBuilder)
        {
          
        }
@@ -71,7 +71,7 @@ export class AddPriceComponent {
 
   let obj = {
     EventId:this.userForm.value.EventId ,
-    Flag:"ActibityShow"
+    Flag:"AdminActibityShow"
   }
 
   this.service.callMethod('showEventOrActivity',obj).subscribe(

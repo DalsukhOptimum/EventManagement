@@ -25,9 +25,14 @@
        
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0 btn" type="button" routerLink = "Register">Register</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" routerLink = "Register">Register</button>
      
-        <button class="btn btn-outline-success my-2 my-sm-0 btn" type="button" routerLink = "Login">login</button>
+        <button *ngIf="!this.service.IsloggedIn" class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" routerLink = "Login">login</button>
+
+<div *ngIf="this.service.IsloggedIn">
+  <button class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" (click)="logout()">Logout</button>
+</div>
+     
       </form>
      
     </div>

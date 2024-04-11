@@ -20,7 +20,7 @@
         <hr style="color: rgb(19, 128, 122);">
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
 
-        
+
             <div class="form-group">
                 <label for="EventId">Event</label>
                 <select class="form-control" id="EventId" formControlName="EventId" (change)="EventChange()">
@@ -57,22 +57,31 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-success custom">Submit</button>
 
             </div>
 
-            <div *ngIf="Message" class="Message mt-3" ><b> {{Message}}</b>
+            <div *ngIf="Message" class="Message mt-3"><b> {{Message}}</b>
 
             </div>
         </form>
+
+        <div class="Previous">
+            <button type="button" class="btn btn-info" (click)="this.service.ComponentName='Add-Activity'">Previous</button>
+        </div>
+        
+        <div class="Next">
+          <button type="button" (click)="this.service.ComponentName='Publish'" class="btn btn-info">Next</button>
+        </div>
+
     </div>
 
     <div *ngIf="!EventData">
         <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> do not have any Events</b>
-         
+
         </div>
     </div>
-    
+
 </body>
 
 </html>

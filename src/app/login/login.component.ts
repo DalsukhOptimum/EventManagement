@@ -45,7 +45,7 @@ export class LoginComponent {
             if (data.ID != 0) {
               sessionStorage.clear();
 
-
+               this.service.IsloggedIn = true ;
               console.log(data.ID);
               if (this.userForm.value.Flag == "AdminLogin") {
                 sessionStorage.setItem('Role', "Admin");

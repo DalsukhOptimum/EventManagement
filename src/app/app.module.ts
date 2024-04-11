@@ -16,6 +16,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { UserEventsComponent } from './user-events/user-events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { UpdateEventComponent } from './update-event/update-event.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AdminEventsComponent } from './admin-events/admin-events.component';
     AdminDashboardComponent,
     UserEventsComponent,
     EventDetailsComponent,
-    AdminEventsComponent
+    AdminEventsComponent,
+    UpdateEventComponent
   ],
   imports: [
     BrowserModule,

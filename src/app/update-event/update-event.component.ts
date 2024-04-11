@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { APICallService } from '../api-call.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
 
-
 @Component({
-  selector: 'app-add-event',
-  templateUrl: './add-event.component.html',
-  styleUrls: ['./add-event.component.css']
+  selector: 'app-update-event',
+  templateUrl: './update-event.component.html',
+  styleUrls: ['./update-event.component.css']
 })
-export class AddEventComponent {
+export class UpdateEventComponent {
 
+  EventDataFromService! :EventEntity;
   Base64!: string;
   regex = new RegExp("^[a-zA-Z ]+$");
 
@@ -69,7 +69,8 @@ export class AddEventComponent {
   }
 
   ngOnInit(): void {
-
+  this.EventDataFromService = this.service.EventDataService ;
+  console.log(this.EventDataFromService);
     this.userForm = this.formBuilder.group({
       Name: ['', [Validators.required,Validators.pattern(this.regex)]],
       Description: ['', Validators.required],
@@ -110,7 +111,7 @@ export class AddEventComponent {
       }
 
     let ev = new EventEntity();
-
+  ev.EventId = this.EventDataFromService.EventId ;
     ev.Name = this.userForm.value.Name;
     ev.Description = this.userForm.value.Description;
     ev.StartDate = this.userForm.value.StartDate;
@@ -133,10 +134,10 @@ export class AddEventComponent {
 
 
     if (this.userForm?.valid) {
-
+  console.log(this.userForm.value);
       //   console.log('Form data:', this.userForm.value);
       //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
-      this.service.callMethod('AddEvent', ev).subscribe(
+      this.service.callMethod('UpdateEvent', ev).subscribe(
         {
           next: (data: any) => {
 
@@ -158,5 +159,5 @@ export class AddEventComponent {
 
     }
   }
-}
 
+}

@@ -13,6 +13,8 @@ export class APICallService {
  
   showalldata:boolean = true ;
   EventDataService!:EventEntity ;
+  ComponentName:string = "default" ;
+  IsloggedIn = (sessionStorage.length == 0)?false:true ;
   
   flag:boolean = false;
   constructor(private http: HttpClient) { }

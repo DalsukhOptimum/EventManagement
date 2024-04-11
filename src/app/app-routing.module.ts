@@ -12,6 +12,7 @@ import { UserEventsComponent } from './user-events/user-events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { MyAuthGuard } from './my-auth.guard';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { UpdateEventComponent } from './update-event/update-event.component';
 
 const routes: Routes = [
 {
@@ -43,6 +44,9 @@ const routes: Routes = [
 },
 {
   path:"Admin-Event",component:AdminEventsComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+},
+{
+  path:"Update-Event",component:UpdateEventComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
 }
 
 ];

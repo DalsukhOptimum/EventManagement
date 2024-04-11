@@ -21,7 +21,7 @@ export class AddActivityComponent {
   EventData!:EventEntity[]
   userForm: any;
   regex = new RegExp("^[a-zA-Z ]+$");
-      constructor( private service:APICallService,private formBuilder: FormBuilder)
+      constructor( public service:APICallService,private formBuilder: FormBuilder)
       {
         
       }

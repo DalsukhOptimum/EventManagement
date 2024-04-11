@@ -83,12 +83,21 @@
 
 
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-success custom">Submit</button>
 
       <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
 
       </div>
     </form>
+
+    <div class="Previous">
+      <button type="button" class="btn btn-info" (click)="this.service.ComponentName='Add-Event'">Previous</button>
+  </div>
+  
+  <div class="Next">
+    <button type="button" (click)="this.service.ComponentName='Add-Price'" class="btn btn-info">Next</button>
+  </div>
+
   </div>
 
   <div *ngIf="!EventData">
