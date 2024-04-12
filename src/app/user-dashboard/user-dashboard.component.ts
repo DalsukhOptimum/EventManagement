@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { APICallService } from '../api-call.service';
+import { EventEntity } from '../Models/EventEntity';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EventEntity } from '../Models/EventEntity';
 
 @Component({
-  selector: 'app-user-events',
-  templateUrl: './user-events.component.html',
-  styleUrls: ['./user-events.component.css']
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html',
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class UserEventsComponent {
+export class UserDashboardComponent {
   Message!: any;
   EventData!: EventEntity[];
+  Flag! :string 
 
 
   constructor(private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
@@ -19,10 +20,23 @@ export class UserEventsComponent {
   }
 
   ngOnInit(): void {
+    this.Eventshow("EmployeeEvent");
+  }
+
+Eventshow(flag:string)
+{
+  if(flag == "EmployeeEvent")
+    {
+      this.Flag = "AllEvents";
+    }
+    else{
+      this.Flag = flag ;
+    }
+
     this.Message = null;
 
     let obj = {
-      Flag: this.service.UserEventFlag 
+      Flag: flag 
     }
     this.service.callMethod('showEventOrActivity', obj).subscribe(
       {
@@ -49,13 +63,16 @@ export class UserEventsComponent {
 
   }
 
-
   viewmore(index: any) {
     this.service.EventDataService = this.EventData[index];
     console.log("this is in function ", this.EventData[index]);
     // let obj = this.EventData.find((obj:any)=>obj.EventId = Id)
-
+  
     this.router.navigate(["/Event-Detail"]);
   }
-
+  
 }
+
+
+
+

@@ -1,0 +1,45 @@
+.sidebar{
+    width: 20%;
+   min-height: 100vh;
+    background-color: aliceblue;
+    border-right: 1px solid rgb(104 131 110);
+    
+}
+.Componentdata{
+    width: 80%;
+    /* height: 80vh; */
+    /* background-color: rgb(15, 153, 26); */
+}
+
+.box{
+    display: flex;
+}
+.Item{
+    margin: 10px;
+    margin-left: 50px;
+    border: none;
+    display: flex;
+  
+    background-color: none;
+}
+.Child
+{
+    padding: 10px;
+    border-bottom: 1px solid rgb(104 131 110);
+
+    
+}
+.sidebar button{
+     background-color:aliceblue; 
+
+  }
+
+  .component{
+    background-color: #bbc0c5; 
+  }
+
+  .my-component{
+    position: sticky; 
+    left: 269px;
+    top: 58px;
+  }

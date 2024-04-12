@@ -30,7 +30,7 @@ export class AdminEventsComponent {
     this.Message = null;
 
     let obj = {
-      Flag: "EmployeeEvent"
+      Flag: "AllEvent"
     }
     this.service.callMethod('showEventOrActivity', obj).subscribe(
       {

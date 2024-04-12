@@ -55,7 +55,7 @@ export class LoginComponent {
               else {
                 sessionStorage.setItem('Role', "User");
                 sessionStorage.setItem('IsLoggedIn', String(true));
-                this.router.navigate(["/User-Events"]);
+                this.router.navigate(["/User-Dashboard"]);
               }
               this.Message = data.Message;
              

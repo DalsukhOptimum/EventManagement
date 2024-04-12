@@ -31,6 +31,7 @@ export class MyAuthGuard implements CanActivate {
       if(sessionStorage.getItem('Role') == "Admin" && route.data['role'] == 'Admin')
         {
           return true ;
+          
         }
 
         this.route.navigate(['/Login']);

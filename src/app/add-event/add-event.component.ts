@@ -5,6 +5,7 @@ import { APICallService } from '../api-call.service';
 import { EventEntity } from '../Models/EventEntity';
 
 
+
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -12,6 +13,7 @@ import { EventEntity } from '../Models/EventEntity';
 })
 export class AddEventComponent {
 
+  d = new Date().toISOString().slice(0, 10);
   Base64!: string;
   regex = new RegExp("^[a-zA-Z ]+$");
 
@@ -41,7 +43,7 @@ export class AddEventComponent {
       }
 
       else {
-        this.userForm.get('Image').setErrors({sizeExceeded:true});
+        this.userForm.get('Image').setErrors({ sizeExceeded: true });
         alert("please select file which have size less than 500kb");
 
       }
@@ -49,7 +51,7 @@ export class AddEventComponent {
     }
     else {
       alert("please select valid type.. Jpeg,png or svg");
-      this.userForm.get('Image').setErrors({invalidTye:true});
+      this.userForm.get('Image').setErrors({ invalidTye: true });
       this.userForm.value.image = null;
     }
 
@@ -65,13 +67,13 @@ export class AddEventComponent {
   Flag: boolean = false;
   submitetd = false;
   constructor(private formBuilder: FormBuilder, public service: APICallService, private route: ActivatedRoute, private router: Router) {
-  
+
   }
 
   ngOnInit(): void {
-
+    console.log(this.d);
     this.userForm = this.formBuilder.group({
-      Name: ['', [Validators.required,Validators.pattern(this.regex)]],
+      Name: ['', [Validators.required, Validators.pattern(this.regex)]],
       Description: ['', Validators.required],
       StartDate: ['', Validators.required],
       EndDate: ['', Validators.required],
@@ -91,23 +93,23 @@ export class AddEventComponent {
 
 
 
-    let startYear:number = this.userForm.value.StartDate.substring(0,4);
-    let startMonth:number = this.userForm.value.StartDate.substring(5,7);
-    let startDate:number = this.userForm.value.StartDate.substring(8,10);
-    console.log(startMonth);
+    // let startYear:number = this.userForm.value.StartDate.substring(0,4);
+    // let startMonth:number = this.userForm.value.StartDate.substring(5,7);
+    // let startDate:number = this.userForm.value.StartDate.substring(8,10);
+    // console.log(startMonth);
 
-    
-    let endtYear:number = this.userForm.value.EndDate.substring(0,4);
-    let endtMonth:number = this.userForm.value.EndDate.substring(5,7);
-    let endtDate:number = this.userForm.value.EndDate.substring(8,10);
-    console.log(endtMonth);
 
-    if( ((startDate >endtDate) && (startMonth <= endtDate) && (startYear <= endtYear)) || ((startMonth > endtMonth) && (startYear >= endtYear)))
-      {
-        console.log("aaya chhu");
-        this.userForm.get('EndDate').setErrors(null);
-        this.userForm.get('EndDate').setErrors({InvalidDateRange:true});
-      }
+    // let endtYear:number = this.userForm.value.EndDate.substring(0,4);
+    // let endtMonth:number = this.userForm.value.EndDate.substring(5,7);
+    // let endtDate:number = this.userForm.value.EndDate.substring(8,10);
+    // console.log(endtMonth);
+
+    // if( ((startDate >endtDate) && (startMonth <= endtDate) && (startYear <= endtYear)) || ((startMonth > endtMonth) && (startYear >= endtYear)))
+    //   {
+    //     console.log("aaya chhu");
+    //     this.userForm.get('EndDate').setErrors(null);
+    //     this.userForm.get('EndDate').setErrors({InvalidDateRange:true});
+    //   }
 
     let ev = new EventEntity();
 

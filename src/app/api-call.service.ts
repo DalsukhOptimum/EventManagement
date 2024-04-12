@@ -12,6 +12,7 @@ export class APICallService {
    ApiBaseUrl:string = "https://localhost:44341/api/EventModule/" 
  
   showalldata:boolean = true ;
+  UserEventFlag = "EmployeeEvent";
   EventDataService!:EventEntity ;
   ComponentName:string = "default" ;
   IsloggedIn = (sessionStorage.length == 0)?false:true ;

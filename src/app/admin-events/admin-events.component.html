@@ -28,8 +28,8 @@
                     <td>{{i+1}}</td>
                     <td>{{obj.Name}}</td>
                     <td>{{obj.Description}}</td>
-                    <td>{{obj.StartDate}}</td>
-                    <td>{{obj.EndDate }} </td>
+                    <td>{{obj.StartDate.toString().slice(0,10)}}</td>
+                    <td>{{obj.EndDate.toString().slice(0,10) }} </td>
                    <td>  <button type="button" class="Item" Id="Delete-Event" class="btn btn-secondary" (click)=" Delete(obj.EventId)" >Delete</button></td>
                    <td>  <button type="button" class="Item" Id="Update-Event" class="btn btn-secondary" (click)=" Update(i)" >Update</button></td>
                 </tr>

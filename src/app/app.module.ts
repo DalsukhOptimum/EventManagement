@@ -17,6 +17,7 @@ import { UserEventsComponent } from './user-events/user-events.component';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UpdateEventComponent } from './update-event/update-event.component';
     UserEventsComponent,
     EventDetailsComponent,
     AdminEventsComponent,
-    UpdateEventComponent
+    UpdateEventComponent,
+    UserDashboardComponent
   ],
   imports: [
     BrowserModule,

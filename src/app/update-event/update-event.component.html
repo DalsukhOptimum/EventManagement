@@ -17,6 +17,7 @@
 
     <div class="container">
         <h2 class="heading">Update Evente</h2>
+        <p>if you Update the Event so activities which is not between updated date will be deleted automatically</p>
         <hr style="color: rgb(19, 128, 122);">
         <form [formGroup]="userForm" (ngSubmit)="submitForm()">
             <div class="form-group">
@@ -45,7 +46,7 @@
 
             <div class="form-group">
                 <label for="StartDate">StartDate</label>
-                <input [placeholder]="EventDataFromService.StartDate" type="datetime-local" id="StartDate" formControlName="StartDate">
+                <input [max]="userForm?.get('EndDate')?.value" [min]="d" [placeholder]="EventDataFromService.StartDate" type="date" id="StartDate" formControlName="StartDate">
                 <div *ngIf="userForm?.get('StartDate').errors?.required">
                  Previous StartDate:  {{EventDataFromService.StartDate}}
                 </div>
@@ -56,7 +57,8 @@
 
             <div class="form-group">
                 <label for="EndDate">EndDate</label>
-                <input [placeholder]="EventDataFromService.EndDate" type="datetime-local" id="EndDate" formControlName="EndDate">
+                
+                <input [placeholder]="EventDataFromService.EndDate" [min]="userForm?.get('StartDate').value" [min]="d" type="date" id="EndDate" formControlName="EndDate">
                 <div *ngIf="userForm?.get('EndDate').errors?.required">
                   previous EndDate: {{EventDataFromService.EndDate}}
                  </div>
@@ -80,6 +82,9 @@
                 </div>
                 <div *ngIf="userForm?.get('Image').errors?.sizeExceeded && submitetd" class="text-danger">
                     Please upload image below 5000kb
+                </div>
+                <div class="Message mt-3" style="color: green;">
+                 if you will not select an Image It will saty with previous image
                 </div>
             </div>
 

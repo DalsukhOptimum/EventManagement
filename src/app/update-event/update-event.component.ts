@@ -14,6 +14,7 @@ export class UpdateEventComponent {
   EventDataFromService! :EventEntity;
   Base64!: string;
   regex = new RegExp("^[a-zA-Z ]+$");
+  d = new Date().toISOString().slice(0, 10);
 
   submit(event: any) {
     console.log(event);
@@ -69,16 +70,23 @@ export class UpdateEventComponent {
   }
 
   ngOnInit(): void {
+    console.log(this.userForm);
   this.EventDataFromService = this.service.EventDataService ;
-  console.log(this.EventDataFromService);
+  
+
+  //console.log(this.userForm.controls['StartDate'].value);
+  //console.log(this.EventDataFromService);
     this.userForm = this.formBuilder.group({
       Name: ['', [Validators.required,Validators.pattern(this.regex)]],
       Description: ['', Validators.required],
       StartDate: ['', Validators.required],
       EndDate: ['', Validators.required],
-      Image: ['', Validators.required],
+      Image: [],
     });
-
+    //this.userForm.controls['StartDate'].setValue(this.service.EventDataService.StartDate.substring(0,10));
+    this.userForm.get('StartDate').setValue(this.service.EventDataService.StartDate.substring(0,10).split('-').reverse().join('-'));
+    this.userForm.get('EndDate').setValue(this.service.EventDataService.EndDate.toString().substring(0,10).split('-').reverse().join('-'));
+    console.log(this.service.EventDataService.StartDate.substring(0,10).split('-').reverse().join('-'));
 
   }
 
@@ -111,13 +119,13 @@ export class UpdateEventComponent {
       }
 
     let ev = new EventEntity();
-  ev.EventId = this.EventDataFromService.EventId ;
+    ev.EventId = this.EventDataFromService.EventId ;
     ev.Name = this.userForm.value.Name;
     ev.Description = this.userForm.value.Description;
     ev.StartDate = this.userForm.value.StartDate;
     ev.EndDate = this.userForm.value.EndDate;
-    ev.Image = this.Base64
-    ev.ImageType = this.userForm.value.Image.toString().split('.')[1]
+    ev.Image = (this.userForm.value.image == null)?this.EventDataFromService.Image:this.Base64
+    ev.ImageType =(this.userForm.value.image == null)?this.EventDataFromService.ImageType :this.Base64.toString().split('.')[1]
 
     // const ev = new EventEntity(
     //   0,
@@ -132,9 +140,9 @@ export class UpdateEventComponent {
     // ) 
 
 
-
+  console.log(this.userForm);
     if (this.userForm?.valid) {
-  console.log(this.userForm.value);
+  console.log(this.userForm);
       //   console.log('Form data:', this.userForm.value);
       //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
       this.service.callMethod('UpdateEvent', ev).subscribe(

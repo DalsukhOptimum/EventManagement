@@ -45,7 +45,8 @@ export class RegisterComponent {
      this.service.callMethod('RegisterUser',this.userForm.value).subscribe(
       {
         
-       next: (data:any)=>{
+     
+        next: (data:any)=>{
          
             console.log(data.ID);
             this.Message = data.Message;

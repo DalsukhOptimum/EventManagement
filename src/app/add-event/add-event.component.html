@@ -43,17 +43,19 @@
 
       <div class="form-group">
         <label for="StartDate">StartDate</label>
-        <input type="datetime-local" id="StartDate" formControlName="StartDate">
+        <input type="date" id="StartDate" [max]="userForm?.get('EndDate')?.value" [min]="d"
+          formControlName="StartDate">
         <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
           Please start date
         </div>
       </div>
 
-
+                     
 
       <div class="form-group">
         <label for="EndDate">EndDate</label>
-        <input type="datetime-local" id="EndDate" formControlName="EndDate">
+        <input type="date" id="EndDate" [min]="userForm?.get('StartDate').value" [min]="d"
+          formControlName="EndDate">
         <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
           Please end date
         </div>
@@ -90,13 +92,13 @@
 
   </div>
 
-<div class="Child">
+  <div class="Child">
     <button type="button" class="btn btn-info" (click)="this.service.ComponentName='default'">Previous</button>
-</div>
+  </div>
 
-<div class="Next">
-  <button type="button" (click)="this.service.ComponentName='Add-Activity'" class="btn btn-info">Next</button>
-</div>
+  <div class="Next">
+    <button type="button" (click)="this.service.ComponentName='Add-Activity'" class="btn btn-info">Next</button>
+  </div>
 
 
 </body>

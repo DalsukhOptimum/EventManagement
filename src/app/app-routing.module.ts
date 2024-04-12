@@ -13,6 +13,7 @@ import { EventDetailsComponent } from './event-details/event-details.component';
 import { MyAuthGuard } from './my-auth.guard';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
 {
@@ -47,6 +48,9 @@ const routes: Routes = [
 },
 {
   path:"Update-Event",component:UpdateEventComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+},
+{
+  path:"User-Dashboard",component:UserDashboardComponent, canActivate:[MyAuthGuard],data: { role: 'User' }
 }
 
 ];
