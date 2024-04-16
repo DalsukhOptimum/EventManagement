@@ -34,6 +34,7 @@ export class LoginComponent {
   submitForm(): void {
     console.log("i am in submit form");
     this.submitted = true;
+    console.log(this.userForm);
 
     if (this.userForm?.valid) {
       //   console.log('Form data:', this.userForm.value);

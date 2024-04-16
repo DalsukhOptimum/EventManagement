@@ -16,6 +16,7 @@ export class AddEventComponent {
   d = new Date().toISOString().slice(0, 10);
   Base64!: string;
   regex = new RegExp("^[a-zA-Z ]+$");
+  
 
   submit(event: any) {
     console.log(event);

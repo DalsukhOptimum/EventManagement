@@ -15,88 +15,106 @@
 
 <body>
 
-    <div class="container">
-        <h2 class="heading">Update Evente</h2>
-        <p>if you Update the Event so activities which is not between updated date will be deleted automatically</p>
-        <hr style="color: rgb(19, 128, 122);">
-        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-            <div class="form-group">
-                <label for="Name">Name</label>
-                <input [(ngModel)]="EventDataFromService.Name" type="text" class="form-control" id="Name"
-                    formControlName="Name">  
-                   
-                <div *ngIf="userForm?.get('Name').errors?.required && submitetd" class="text-danger">
-                    Name is Required
-                </div>
-                <div *ngIf="userForm?.get('Name').errors?.pattern && submitetd" class="text-danger">
-                    Please wrte valid name
-                </div>
-            </div>
+    <div class="container" EventDataFromService>
 
+        <div class="Message mt-3" style="color: white;"><b> if you Update the Event so activities which is not between
+                updated date will be deleted automatically</b>
+        </div>
+        <div class="formclass">
+            <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+                <h2 class="heading">Update Evente</h2>
+                <div class="form-group">
+                    <label style="float: left;" for="Name">Name</label>
+                    <input [(ngModel)]="EventDataFromService.Name" type="text" class="form-control" id="Name"
+                        formControlName="Name">
 
-
-            <div class="form-group">
-                <label for="Description">Description</label>
-                <textarea [(ngModel)]="EventDataFromService.Description" class="form-control" id="Description" rows="3" formControlName="Description"></textarea>
-                <div *ngIf="userForm?.get('Description')?.invalid && submitetd" class="text-danger">
-                    Please Enter Description
-                </div>
-            </div>
-
-
-            <div class="form-group">
-                <label for="StartDate">StartDate</label>
-                <input [max]="userForm?.get('EndDate')?.value" [min]="d" [placeholder]="EventDataFromService.StartDate" type="date" id="StartDate" formControlName="StartDate">
-                <div *ngIf="userForm?.get('StartDate').errors?.required">
-                 Previous StartDate:  {{EventDataFromService.StartDate}}
-                </div>
-                <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
-                    Please start date
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="EndDate">EndDate</label>
-                
-                <input [placeholder]="EventDataFromService.EndDate" [min]="userForm?.get('StartDate').value" [min]="d" type="date" id="EndDate" formControlName="EndDate">
-                <div *ngIf="userForm?.get('EndDate').errors?.required">
-                  previous EndDate: {{EventDataFromService.EndDate}}
-                 </div>
-                <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
-                    Please enter end date
+                    <div *ngIf="userForm?.get('Name').errors?.required && submitetd" class="text-danger">
+                        Name is Required
+                    </div>
+                    <div *ngIf="userForm?.get('Name').errors?.pattern && submitetd" class="text-danger">
+                        Please wrte valid name
+                    </div>
                 </div>
 
-                <div *ngIf="userForm?.get('EndDate').errors?.InvalidDateRange && submitetd" class="text-danger">
-                    Please select valid startdate and End date
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="Image">Image</label>
-                <input type="file" id="Image" formControlName="Image" (change)="submit($event)" formControlName="Image">
-                <div *ngIf="userForm?.get('Image').errors?.required && submitetd" class="text-danger">
-                    Please Upload Image
-                </div>
-                <div *ngIf="userForm?.get('Image').errors?.invalidTye && submitetd" class="text-danger">
-                    Please select valid Image type
-                </div>
-                <div *ngIf="userForm?.get('Image').errors?.sizeExceeded && submitetd" class="text-danger">
-                    Please upload image below 5000kb
-                </div>
-                <div class="Message mt-3" style="color: green;">
-                 if you will not select an Image It will saty with previous image
-                </div>
-            </div>
 
 
+                <div class="form-group">
+                    <label style="float: left;" for="Description">Description</label>
+                    <textarea [(ngModel)]="EventDataFromService.Description" class="form-control" id="Description"
+                        rows="3" formControlName="Description"></textarea>
+                    <div *ngIf="userForm?.get('Description')?.invalid && submitetd" class="text-danger">
+                        Please Enter Description
+                    </div>
+                </div>
 
-            <button type="submit" class="btn btn-success custom">Submit</button>
 
-         <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b> 
-            </div>
-   
+                <div class="form-group">
+                    <label style="float: left;" for="StartDate">StartDate</label>
+                    <input [max]="userForm?.get('EndDate').value" [min]="EventStartDate" [max]="EventEndDate"
+                        [placeholder]="EventDataFromService.StartDate" type="date" id="StartDate"
+                        formControlName="StartDate">
+                    <div *ngIf="userForm?.get('StartDate').errors?.required">
+                        Previous StartDate: {{EventDataFromService.StartDate}}
+                    </div>
+                    <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
+                        Please start date
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="float: left;" for="EndDate">EndDate</label>
+
+                    <input [max]="EventEndDate" [min]="EventStartDate" [min]="userForm?.get('StartDate')?.value"
+                        [placeholder]="EventDataFromService.EndDate" [min]="userForm?.get('StartDate').value"
+                        type="date" id="EndDate" formControlName="EndDate">
+                    <div *ngIf="userForm?.get('EndDate').errors?.required">
+                        previous EndDate: {{EventDataFromService.EndDate}}
+                    </div>
+                    <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
+                        Please enter end date
+                    </div>
+
+                    <div *ngIf="userForm?.get('EndDate').errors?.InvalidDateRange && submitetd" class="text-danger">
+                        Please select valid startdate and End date
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="float: left;" for="Image">Image</label>
+                    <input type="file" id="Image" formControlName="Image" (change)="submit($event)"
+                        formControlName="Image">
+                    <div *ngIf="userForm?.get('Image').errors?.required && submitetd" class="text-danger">
+                        Please Upload Image
+                    </div>
+                    <div *ngIf="userForm?.get('Image').errors?.invalidTye && submitetd" class="text-danger">
+                        Please select valid Image type
+                    </div>
+                    <div *ngIf="userForm?.get('Image').errors?.sizeExceeded && submitetd" class="text-danger">
+                        Please upload image below 5000kb
+                    </div>
+                    <div class="Message mt-3" style="color: green;">
+                        if you will not select an Image It will saty with previous image
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-success custom">Submit</button>
+
+                <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
+                </div>
+
             </form>
+
+        </div>
     </div>
+
+    <div *ngIf="!EventDataFromService">
+        <div *ngIf="Message" class="text-danger mt-3">
+          <b>Please first select Event to update</b>
+          
+        </div>
+      </div>
 
 
 

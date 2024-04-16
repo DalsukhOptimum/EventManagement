@@ -62,6 +62,8 @@ export class UpdateEventComponent {
   userForm: any;
   Message: any;
   Id!: number;
+  EventStartDate!:string;
+  EventEndDate!:string;
 
   Flag: boolean = false;
   submitetd = false;
@@ -71,8 +73,10 @@ export class UpdateEventComponent {
 
   ngOnInit(): void {
     console.log(this.userForm);
+   
   this.EventDataFromService = this.service.EventDataService ;
-  
+  this.EventStartDate=this.EventDataFromService.StartDate.toString().substring(0,10).split('-').reverse().join('-');  ;
+  this.EventEndDate = this.EventDataFromService.EndDate.toString().substring(0,10).split('-').reverse().join('-'); 
 
   //console.log(this.userForm.controls['StartDate'].value);
   //console.log(this.EventDataFromService);

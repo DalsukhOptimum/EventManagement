@@ -43,3 +43,12 @@
     left: 269px;
     top: 58px;
   }
+
+  .tbl{
+    border: 3px solid black;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    margin-left: 10px;
+    margin-right:10px;
+    border-radius: 10px solid black;
+}

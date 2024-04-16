@@ -5,10 +5,14 @@
     border-right: 1px solid rgb(104 131 110);
     
 }
-.Componentdata{
+.Componentdata {
     width: 80%;
     /* height: 80vh; */
-    /* background-color: rgb(15, 153, 26); */
+     /* background-color: rgb(15, 153, 26);  */
+}
+
+.Componentdata .component{
+    background-color: rgb(15, 153, 26);
 }
 
 .box{

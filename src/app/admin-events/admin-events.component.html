@@ -11,36 +11,41 @@
 
     <div *ngIf="EventData" class="my-class">
         <h2 style="text-align: center;margin-bottom: 21px;margin-top: 10px;"> Events </h2>
-        <table class="table table-bordered tb-custom">
-            <thead>
-                <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">EventName</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">StartDate</th>
-                    <th scope="col">EndDate</th>
-                    
+        <div class="tbl">
+            <table class="table table-bordered tb-custom table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Index</th>
+                        <th scope="col">EventName</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">StartDate</th>
+                        <th scope="col">EndDate</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
 
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let obj of EventData;let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{obj.Name}}</td>
-                    <td>{{obj.Description}}</td>
-                    <td>{{obj.StartDate.toString().slice(0,10)}}</td>
-                    <td>{{obj.EndDate.toString().slice(0,10) }} </td>
-                   <td>  <button type="button" class="Item" Id="Delete-Event" class="btn btn-secondary" (click)=" Delete(obj.EventId)" >Delete</button></td>
-                   <td>  <button type="button" class="Item" Id="Update-Event" class="btn btn-secondary" (click)=" Update(i)" >Update</button></td>
-                </tr>
 
-            </tbody>
-        </table>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let obj of EventData;let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{obj.Name}}</td>
+                        <td>{{obj.Description}}</td>
+                        <td>{{obj.StartDate.toString().slice(0,10)}}</td>
+                        <td>{{obj.EndDate.toString().slice(0,10) }} </td>
+                        <td> <button type="button" class="Item" Id="Delete-Event" class="btn btn-secondary"
+                                (click)=" Delete(obj.EventId)">Delete</button></td>
+                        <td> <button type="button" class="Item" Id="Update-Event" class="btn btn-secondary"
+                                (click)=" Update(i)">Update</button></td>
+                    </tr>
 
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
-        </div>
+    </div>
 
 </body>
 

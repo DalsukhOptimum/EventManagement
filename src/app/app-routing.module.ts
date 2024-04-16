@@ -14,8 +14,12 @@ import { MyAuthGuard } from './my-auth.guard';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
+  {
+    path:"",component:HomeComponent, 
+   },
 {
  path:"Register",component:RegisterComponent, 
 },
@@ -51,6 +55,9 @@ const routes: Routes = [
 },
 {
   path:"User-Dashboard",component:UserDashboardComponent, canActivate:[MyAuthGuard],data: { role: 'User' }
+},
+{
+  path:"Home",component:HomeComponent,
 }
 
 ];

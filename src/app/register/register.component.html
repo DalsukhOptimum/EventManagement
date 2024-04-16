@@ -1,89 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="container">
-       <h2 class="heading">Register</h2>
-        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-    
-            <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" formControlName="name">
-            <div *ngIf="userForm?.get('name').errors?.required && submitted" class="text-danger">
-              Name is Required 
-             </div>
-             <div *ngIf="userForm?.get('name').errors?.pattern && submitted" class="text-danger">
-              Please Enter valid name
-              </div>
+  <div class="container ">
+    <div class="formclass mt-3 mb-3">
+      <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+        <h2 class="heading">Register</h2>
+        <div class="form-group">
+          <label style="float: left;" for="name">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name">
+          <div *ngIf="userForm?.get('name').errors?.required && submitted" class="text-danger">
+            Name is Required
           </div>
-      
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" formControlName="email">
-            <div *ngIf="userForm?.get('name').errors?.required && submitted" class="text-danger">
-              Email is Required 
-             </div>
-             <div *ngIf="userForm?.get('name').errors?.pattern && submitted" class="text-danger">
-              Please Enter valid Email
-              </div>
+          <div *ngIf="userForm?.get('name').errors?.pattern && submitted" class="text-danger">
+            Please Enter valid name
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="float: left;" for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="userForm?.get('name').errors?.required && submitted" class="text-danger">
+            Email is Required
+          </div>
+          <div *ngIf="userForm?.get('name').errors?.pattern && submitted" class="text-danger">
+            Please Enter valid Email
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label style="float: left;" for="address">Address</label>
+          <input type="text" class="form-control" id="address" formControlName="address">
+          <div *ngIf="userForm?.get('address').errors?.required && submitted" class="text-danger">
+            Addressis Required
+          </div>
+          <div *ngIf="userForm?.get('address').errors?.minLength && submitted" class="text-danger">
+            Please Enter Minimum of length 10
+          </div>
+          <div *ngIf="userForm?.get('address').errors?.maxLength && submitted" class="text-danger">
+            Maximum length should not exceed 100
           </div>
 
-      
-          <div class="form-group">
-            <label for="address">Address</label>
-            <input type="text" class="form-control" id="address" formControlName="address">
-            <div *ngIf="userForm?.get('address').errors?.required && submitted" class="text-danger">
-              Addressis Required 
-             </div>
-             <div *ngIf="userForm?.get('address').errors?.minLength && submitted" class="text-danger">
-              Please Enter Minimum of length 10 
-              </div>
-              <div *ngIf="userForm?.get('address').errors?.maxLength && submitted" class="text-danger">
-                Maximum length should not exceed 100
-                </div>
-            
-          </div>
-      
-          <div class="form-group">
-            <label for="mobile">Mobile Number</label>
-            <input type="number" class="form-control" id="mobile" formControlName="mobile">
-            <div *ngIf="userForm?.get('mobile').errors?.required && submitted" class="text-danger">
-             Mobile Number  is Required 
-             </div>
-             <div *ngIf="userForm?.get('mobile').errors?.pattern && submitted" class="text-danger">
-              Please Enter Valid mobile number
-              </div>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <label for="Password">Password</label>
-            <input type="text" class="form-control" id="Password" formControlName="Password">
-            <div *ngIf="userForm?.get('Password')?.invalid && submitted" class="text-danger">
-              Password is required.
-            </div>
+        <div class="form-group">
+          <label style="float: left;" for="mobile">Mobile Number</label>
+          <input type="number" class="form-control" id="mobile" formControlName="mobile">
+          <div *ngIf="userForm?.get('mobile').errors?.required && submitted" class="text-danger">
+            Mobile Number is Required
           </div>
-          
-          <button  type="submit" id="submit" class="btn btn-primary">Submit</button>
-
-          <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
-           
+          <div *ngIf="userForm?.get('mobile').errors?.pattern && submitted" class="text-danger">
+            Please Enter Valid mobile number
           </div>
+        </div>
 
-        </form>
-      </div>
-      
-  
+        <div class="form-group">
+          <label style="float: left;" for="Password">Password</label>
+          <input type="text" class="form-control" id="Password" formControlName="Password">
+          <div *ngIf="userForm?.get('Password')?.invalid && submitted" class="text-danger">
+            Password is required.
+          </div>
+        </div>
+
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+
+
+        <div class="already">
+          Already have an account?
+          <a style="color: blue;" routerLink = "/Login" > Login</a>
+        </div>
+        <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
 
 </body>
+
 </html>
-
-
-
-
-
-

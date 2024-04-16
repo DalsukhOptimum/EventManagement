@@ -9,9 +9,9 @@
 
 <body>
 
-    <div *ngIf="EventData">
+    <div class="mycontainer" *ngIf="EventData">
         <div>
-            <h2 style="text-align: center; margin: top 10px; color: rgb(28, 226, 117);">{{EventData.Name}}</h2>
+            <h2 style="text-align: center; margin: top 10px; color: rgba(20, 20, 20, 0.486);">{{EventData.Name}}</h2>
             <img *ngIf="ImageType == 'jpeg' || ImageType == 'png' || ImageType == 'jpg' " class="custom-Img"
                 [src]="'data:image/jpeg;base64,' + Base64Image" />
             <img *ngIf="ImageType == 'svg'" class="custom-Img" [src]="'data:image/svg+xml;base64,' + Base64Image" />
@@ -33,7 +33,7 @@
 
         <div class="box" *ngIf="ActivityData">
             <h2 style="text-align: center;margin-bottom: 21px;margin-top: 21px;"> Activities </h2>
-            <table class="table table-bordered tb-custom">
+            <table class="table table-bordered tb-custom table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Index</th>
@@ -50,8 +50,8 @@
                         <td>{{i+1}}</td>
                         <td>{{obj.Name}}</td>
                         <td>{{obj.Description}}</td>
-                        <td>{{obj.StartDate}}</td>
-                        <td>{{obj.EndDate }} </td>
+                        <td>{{obj.StartDate.toString().slice(0,10)}}</td>
+                        <td>{{obj.EndDate.toString().slice(0,10) }} </td>
                         <td>{{obj.Price }} </td>
                     </tr>
 

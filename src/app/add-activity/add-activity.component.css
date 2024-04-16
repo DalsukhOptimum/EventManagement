@@ -5,11 +5,74 @@
 }
 
 .Next{
-    margin-top: 5px;
-    margin-right: 5px;
-    float: right;
+   display: inline;
+    margin-left: 5px;
+  
 }
 
-.custom{
+/* body{
+    background-color: aliceblue;
+} */
+
+
+
+
+/* .custom{
     margin-left: 500px;
+} */
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+     width: auto;
+    height: auto;
+    
+}
+
+ .formclass{
+    border: 2px solid white;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    margin-top: 10px;
+    margin-bottom: 3px;
+     
+}
+
+ button{
+     margin-top: 50px; 
+    width: 200px;
+    border-radius: 25px;
+    background-image: linear-gradient(180deg, rgb(57, 24, 118), rgb(165, 16, 123));
+} 
+
+ body {
+    background-color: rgb(2 75 121 / 23%);  
+    background-image: linear-gradient(180deg, rgb(57, 24, 118), rgb(165, 16, 123));
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0px;
+    padding: 0px;
+}  
+
+.prenext{
+    /* margin: none; */
+    /* background-image: linear-gradient(180deg, rgb(57, 24, 118), rgb(165, 16, 123)); */
+    /* background-size: cover; */
+}
+
+.prenext button{
+    display: inline;
+   
+    /* margin-bottom: 50px; */
+}
+
+.Child{
+    display: inline;
+   margin-right: 10px;
 }

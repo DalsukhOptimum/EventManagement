@@ -1,0 +1,27 @@
+/* body{
+    background-image: url('https://jdinstituteoffashiontechnology.com/wp-content/uploads/2023/03/event-management-813x431.jpg')
+} */
+
+.item{
+
+     height: 95vh;
+     width: 100vw;
+     position: absolute;
+     /* top: 285px;
+     left: 100px; */
+     padding-left: 90px;
+     padding-top: 220px;
+  margin: auto;
+  background-image: url("../../assets/back-2.avif");
+  background-size: cover;
+  
+
+}
+
+.para{
+    width: 500px;
+}
+
+text{
+    color: white;
+}

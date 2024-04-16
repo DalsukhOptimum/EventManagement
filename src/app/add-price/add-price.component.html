@@ -16,69 +16,79 @@
 <body>
 
     <div *ngIf="EventData" class="container">
-        <h2 class="heading">Add Price</h2>
-        <hr style="color: rgb(19, 128, 122);">
-        <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+
+        <div class="formclass">
 
 
-            <div class="form-group">
-                <label for="EventId">Event</label>
-                <select class="form-control" id="EventId" formControlName="EventId" (change)="EventChange()">
-                    <option value="">Select Type</option>
-                    <option *ngFor="let obj of EventData" value={{obj.EventId}}>{{obj.Name}}</option>
 
-                </select>
-                <div *ngIf="userForm?.get('EventId')?.invalid && submitetd" class="text-danger">
-                    select Event
-                </div>
-            </div>
-
-            <div *ngIf="ActivityData">
-
-
+            <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+                <h2 class="heading">Add Price</h2>
 
                 <div class="form-group">
-                    <label for="ActivityId">Activity</label>
-                    <select class="form-control" id="ActivityId" formControlName="ActivityId">
+                    <label style="float: left;" for="EventId">Event</label>
+                    <select class="form-control" id="EventId" formControlName="EventId" (change)="EventChange()">
                         <option value="">Select Type</option>
-                        <option *ngFor="let obj of ActivityData" value={{obj.ActivityId}}>{{obj.Name}}</option>
+                        <option *ngFor="let obj of EventData" value={{obj.EventId}}>{{obj.Name}}</option>
 
                     </select>
                     <div *ngIf="userForm?.get('EventId')?.invalid && submitetd" class="text-danger">
-                        select Activity
+                        select Event
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="Price">Price</label>
-                    <input type="number" class="form-control" id="Price" formControlName="Price">
-                    <div *ngIf="userForm?.get('Price')?.invalid && submitetd" class="text-danger">
-                        Price is Required
+                <div *ngIf="ActivityData">
+
+
+
+                    <div class="form-group">
+                        <label style="float: left;" for="ActivityId">Activity</label>
+                        <select class="form-control" id="ActivityId" formControlName="ActivityId">
+                            <option value="">Select Type</option>
+                            <option *ngFor="let obj of ActivityData" value={{obj.ActivityId}}>{{obj.Name}}</option>
+
+                        </select>
+                        <div *ngIf="userForm?.get('EventId')?.invalid && submitetd" class="text-danger">
+                            select Activity
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <label style="float: left;" for="Price">Price</label>
+                        <input type="number" class="form-control" id="Price" formControlName="Price">
+                        <div *ngIf="userForm?.get('Price')?.invalid && submitetd" class="text-danger">
+                            Price is Required
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success custom">Submit</button>
+
                 </div>
 
-                <button type="submit" class="btn btn-success custom">Submit</button>
+                <div *ngIf="Message" class="Message mt-3"><b> {{Message}}</b>
 
-            </div>
+                </div>
+            </form>
 
-            <div *ngIf="Message" class="Message mt-3"><b> {{Message}}</b>
-
-            </div>
-        </form>
-
-        <div class="Previous">
-            <button type="button" class="btn btn-info" (click)="this.service.ComponentName='Add-Activity'">Previous</button>
-        </div>
-        
-        <div class="Next">
-          <button type="button" (click)="this.service.ComponentName='Publish'" class="btn btn-info">Next</button>
         </div>
 
+        <div class="prenext">
+            <div class="Previous">
+                <button type="button" class="btn btn-info"
+                    (click)="this.service.ComponentName='Add-Activity'">Previous</button>
+            </div>
+    
+            <div class="Next">
+                <button type="button" (click)="this.service.ComponentName='Publish'" class="btn btn-info">Next</button>
+            </div>
+        </div>
     </div>
+   
+
 
     <div *ngIf="!EventData">
-        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> do not have any Events</b>
-
+        <div *ngIf="Message" class="Message mt-3" style="color: red;">
+            <b> do not have any Events</b>
+            <p>First Add some Events then Add Activity and then come here to Add Price</p>
         </div>
     </div>
 

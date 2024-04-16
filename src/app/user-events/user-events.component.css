@@ -3,6 +3,17 @@
 } */
 
 body{
-    margin: 100px;
-    margin-top: 50px;
+    /* margin: 100px;
+    margin-top: 50px; */
+}
+
+/* .my-class{
+ margin: 10px;
+} */
+
+.tbl{
+    border: 3px solid black;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
 }
