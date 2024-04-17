@@ -1,8 +1,8 @@
 .custom-Img{
     display: block;
     margin: auto;
-    height:auto;
-    width: auto;
+    height:500px;
+    width: 800px;
     border-radius: 10px;
     
     
@@ -14,10 +14,11 @@ body{
  
 }
 .description{
-    border: 2px solid rgb(84, 31, 207);
+     border: 2px solid rgb(13, 13, 14); 
+    border-radius: 2px solid rgb(104 104 112);
  
     height: auto;
-    width: 500px;
+    width: 800px;
     /* margin-left: 500px;
     margin-top: 20px;
     margin-bottom: 20px; */
@@ -35,3 +36,21 @@ body{
     margin-right: 10px;
     margin-left: 10px;
 }
+
+.Datesclass{
+    display: block;
+    margin: auto;
+    border: 2px solid rgb(13, 13, 14);
+    width: 800px;
+    height: auto;
+    text-align: justify;
+    padding: 10px;
+}
+
+.messageclass{
+    display: flex;
+    justify-content: center;
+    width: 800px;
+    height: auto;
+}
+

@@ -18,6 +18,7 @@ export class UserEventsComponent {
 
   }
 
+  //this is for fetching all the events which is published.
   ngOnInit(): void {
     this.Message = null;
 

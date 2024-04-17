@@ -11,7 +11,7 @@
 
     <div class="mycontainer" *ngIf="EventData">
         <div>
-            <h2 style="text-align: center; margin: top 10px; color: rgba(20, 20, 20, 0.486);">{{EventData.Name}}</h2>
+            <h2 style="text-align: center; margin: top 10px; color: black">{{EventData.Name}}</h2>
             <img *ngIf="ImageType == 'jpeg' || ImageType == 'png' || ImageType == 'jpg' " class="custom-Img"
                 [src]="'data:image/jpeg;base64,' + Base64Image" />
             <img *ngIf="ImageType == 'svg'" class="custom-Img" [src]="'data:image/svg+xml;base64,' + Base64Image" />
@@ -20,13 +20,14 @@
         </div>
 
         <div class="description" >
+            what is this Event  About: <br>
             {{EventData.Description}}
         </div>
 
-        <div style="border: 2px solid rgb(61, 38, 161);">
+        <div class="Datesclass" >
             <p>Note the Dates:</p>
-            <p>Start Date: {{EventData.StartDate}}</p>
-            <p>End Date: {{EventData.EndDate}}</p>
+            <p>Start Date: {{EventData.StartDate.toString().slice(0,10)}}</p>
+            <p>End Date: {{EventData.EndDate.toString().slice(0,10)}}</p>
         </div>
 
 
@@ -60,8 +61,11 @@
 
         </div>
 
-        <div *ngIf="Message" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+    <div class="messageclass">
+        <div *ngIf="Message" class="Message mt-3 " style="color: red;">
+            <b> {{Message}}</b>
         </div>
+    </div>
 
     </div>
 

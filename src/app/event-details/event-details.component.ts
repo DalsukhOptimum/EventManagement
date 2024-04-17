@@ -11,12 +11,16 @@ import { ActivityEntity } from '../Models/ActivityEntity';
 })
 export class EventDetailsComponent {
 
-  userForm:any
+  //for storing message which is coming from backend
   Message: any;
+  //event data coming from Service
   EventData!:EventEntity ;
-  haveActivity: boolean = false;
+ //list of Activity data object
   ActivityData!: ActivityEntity[];
+
+  // for storing base64 image 
   Base64Image!:string ;
+  //for storing Image type 
   ImageType!:string ;
 constructor( private service:APICallService,private formBuilder: FormBuilder)
 { 
@@ -24,17 +28,19 @@ constructor( private service:APICallService,private formBuilder: FormBuilder)
 }
 
 ngOnInit(): void {
-  console.log("this is about next line");
-  console.log(this.service.EventDataService);
+  
+  //storing Event data which is in the Service 
   this.EventData = this.service.EventDataService;
+  //taking base64 image and storing in this for showing in html file 
   this.Base64Image = this.service.EventDataService.Image;
+  //storing imagetype in this for showing in HTML file 
   this.ImageType = this.service.EventDataService.ImageType ;
-  console.log("this is base64" +this.Base64Image);
+
   let obj = {
     EventId:this.service.EventDataService.EventId,
     Flag:"ActibityShow"
   }
-  
+  //calling the API and storing that list of activity ACtivityData
   this.service.callMethod('showEventOrActivity',obj).subscribe(
     {
      next: (data:any)=>{
@@ -42,7 +48,7 @@ ngOnInit(): void {
        {
            this.ActivityData = data.ArrayOfResponse;
            console.log(this.ActivityData[0].Price);
-           this.haveActivity = true ;
+   
             console.log(data);
              
        }

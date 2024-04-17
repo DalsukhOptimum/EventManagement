@@ -28,10 +28,10 @@
         <div class="form-group">
           <label style="float: left;" for="email">Email</label>
           <input type="email" class="form-control" id="email" formControlName="email">
-          <div *ngIf="userForm?.get('name').errors?.required && submitted" class="text-danger">
+          <div *ngIf="userForm?.get('email').errors?.required && submitted" class="text-danger">
             Email is Required
           </div>
-          <div *ngIf="userForm?.get('name').errors?.pattern && submitted" class="text-danger">
+          <div *ngIf="userForm?.get('email').errors?.pattern && submitted" class="text-danger">
             Please Enter valid Email
           </div>
         </div>

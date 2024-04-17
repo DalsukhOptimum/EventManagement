@@ -47,3 +47,21 @@ button{
     left: 269px;
     top: 58px;
   }
+
+  .iconclass{
+   /* height: 40px;
+   width: 40px;
+   margin-right: 0px; */
+  }
+
+  .rowitem{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    flex-direction: row;
+    
+  }
+
+  .iconclass :hover{
+    cursor: pointer;
+  }

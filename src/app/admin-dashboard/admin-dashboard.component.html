@@ -10,42 +10,71 @@
 <body>
     <div class="box">
         <div class="sidebar">
-            <div class="Child">
-                <button type="button" class="Item" Id="Add-Event" (click)="this.service.ComponentName='Add-Event'">Add Event</button>
-            </div>
-            <div class="Child">
-                <button type="button" class="Item" Id="Add-Activity" (click)="this.service.ComponentName='Add-Activity'">Add
-                    Activity</button>
-            </div>
 
             <div class="Child">
-                <button type="button" class="Item" Id="Add-Price" (click)="this.service.ComponentName='Add-Price'">Add Price</button>
+                <div class="rowitem">
+                    <button type="button" class="Item" Id="Add-Event" (click)="this.service.ComponentName='default'">
+                        <fa-icon class="iconclass" (click)="this.service.ComponentName='default'"
+                            [icon]="DashboardIcon"></fa-icon>&nbsp; <b>Home</b></button>
+                </div>
             </div>
 
             <div class="Child">
-                <button type="button" class="Item" Id="Publish" (click)="this.service.ComponentName='Publish'">Publish</button>
+                <div class="rowitem">
+                    <button type="button" class="Item" Id="Add-Event" (click)="this.service.ComponentName='Add-Event'">
+                        <fa-icon class="iconclass" (click)="this.service.ComponentName='Add-Event'"
+                            [icon]="Icon"></fa-icon>&nbsp; <b>Add Event</b></button>
+                </div>
+            </div>
+            <div class="Child">
+                <div class="rowitem">
+
+                    <button type="button" class="Item" Id="Add-Activity"
+                        (click)="this.service.ComponentName='Add-Activity'"> <fa-icon class="iconclass"
+                            (click)="this.service.ComponentName='Add-Event'" [icon]="Icon"></fa-icon>&nbsp; <b>Add
+                            Activity</b></button>
+                </div>
             </div>
 
-           
+            <div class="Child">
+                <div class="rowitem">
 
-           
+                    <button type="button" class="Item" Id="Add-Price"
+                        (click)="this.service.ComponentName='Add-Price'"><fa-icon class="iconclass"
+                            (click)="this.service.ComponentName='Add-Event'" [icon]="Icon"></fa-icon>&nbsp; <b>Add
+                            Price</b></button>
+                </div>
+            </div>
+
+            <div class="Child">
+
+                <button type="button" class="Item" Id="Publish" (click)="this.service.ComponentName='Publish'">&nbsp;
+                    &nbsp; <fa-icon class="iconclass" (click)="this.service.ComponentName='Add-Event'"
+                        [icon]="uploadIcon"></fa-icon>&nbsp; <b>Publish</b></button>
+            </div>
+
+
+
+
 
 
 
         </div>
 
         <div class="Componentdata">
-            <app-admin-events class="component my-component" *ngIf="this.service.ComponentName == 'default'"></app-admin-events>
+            <app-admin-events class="component my-component "
+                *ngIf="this.service.ComponentName == 'default'"></app-admin-events>
             <app-add-event class="component" *ngIf="this.service.ComponentName == 'Add-Event'"></app-add-event>
             <app-add-activity class="component" *ngIf="this.service.ComponentName =='Add-Activity'"></app-add-activity>
             <app-add-price class="component" *ngIf="this.service.ComponentName == 'Add-Price'"></app-add-price>
             <app-publish class="component" *ngIf="this.service.ComponentName == 'Publish'"></app-publish>
             <app-update-event class="component" *ngIf="this.service.ComponentName == 'Update-Event'"></app-update-event>
-            
+
 
         </div>
 
     </div>
+
 </body>
 
 </html>

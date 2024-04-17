@@ -3,6 +3,8 @@ import { APICallService } from '../api-call.service';
 import { EventEntity } from '../Models/EventEntity';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import {faBookOpenReader,faCalendarDays,faHome} from '@fortawesome/free-solid-svg-icons'
+
 
 @Component({
   selector: 'app-user-dashboard',
@@ -10,8 +12,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent {
+  // this is Ions from fortawesome libraray
+  IconInfo = faBookOpenReader;
+  IconfaCalendarDays = faCalendarDays ;
+  IconHome = faHome ;
+
+  //message for storing message which is coming from API.
   Message!: any;
+  //List of Event data which is coming fom API.
   EventData!: EventEntity[];
+  //flag which willd decide that which component to show 
+  //this flag will change from HTML buttons 
+  // from this we will also show the heading to the HTML page 
   Flag! :string 
 
 
@@ -23,11 +35,13 @@ export class UserDashboardComponent {
     this.Eventshow("EmployeeEvent");
   }
 
+  //this is when user click on any button this will set the flag and then call the api upon this and this will show event based upon that
 Eventshow(flag:string)
 {
+  //if flag is EmployeeEvent show we want to show heading as ALl Eevnts that's why we change the flag 
   if(flag == "EmployeeEvent")
     {
-      this.Flag = "AllEvents";
+      this.Flag = "All Events";
     }
     else{
       this.Flag = flag ;
@@ -63,10 +77,12 @@ Eventshow(flag:string)
 
   }
 
+  //when user will click on show more this function will be called 
+  // this will store that particular event to service and then redirect to the User Detail page
   viewmore(index: any) {
     this.service.EventDataService = this.EventData[index];
     console.log("this is in function ", this.EventData[index]);
-    // let obj = this.EventData.find((obj:any)=>obj.EventId = Id)
+  
   
     this.router.navigate(["/Event-Detail"]);
   }

@@ -9,15 +9,20 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./publish.component.css']
 })
 export class PublishComponent {
+  //we will store the message which is coming from backend 
   Message!: any;
+  //array of Event object which is coming from API.
   EventData!: EventEntity[];
-  haveEvent: boolean = false;
+
+  //user form object for taking an data from html file 
   userForm: any;
+  //setting up this to true when click on submit 
   submitetd = false;
   constructor(private service: APICallService, private formBuilder: FormBuilder) {
 
   }
 
+  //it will fetch all the event which is pending to publish in ngoninit
   ngOnInit(): void {
     
    this.getEvents();
@@ -28,6 +33,7 @@ export class PublishComponent {
 
   }
 
+  //this is function for fetching all the events
   getEvents()
   {
     this.Message = null;
@@ -40,8 +46,10 @@ export class PublishComponent {
       {
         next: (data: any) => {
           if (data.ID != 0) {
+            //storing object of Event coming from API.
             this.EventData = data.ArrayOfResponse;
-            this.haveEvent = true;
+        
+            
             console.log(data);
 
           }
@@ -57,6 +65,7 @@ export class PublishComponent {
       });
   }
 
+  //this is called for publish the Event
   submitForm(): void {
     this.submitetd = true;
     console.log("i am in submit form");
@@ -68,7 +77,7 @@ export class PublishComponent {
 
 
 
-
+  //checking form validation and then call the API.
     if (this.userForm?.valid) {
 
 
@@ -78,8 +87,6 @@ export class PublishComponent {
         Flag: "Publish"
       }
       console.log("ok");
-      //   console.log('Form data:', this.userForm.value);
-      //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
       this.service.callMethod('PublishOrAddPrice', obj).subscribe(
         {
           next: (data: any) => {

@@ -16,6 +16,7 @@ import { UpdateEventComponent } from './update-event/update-event.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { HomeComponent } from './home/home.component';
 
+// sending roles accourding to the component if it is user's component so send user and if admin component so sending admin
 const routes: Routes = [
   {
     path:"",component:HomeComponent, 

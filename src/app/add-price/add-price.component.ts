@@ -11,12 +11,16 @@ import { ActivityEntity } from '../Models/ActivityEntity';
 })
 export class AddPriceComponent {
        Message!:any ;
+       //List of Event which we will take from API.
        EventData!:EventEntity[];
+       //Array of Activity objects
        ActivityData!:any;
-       haveEvent:boolean  = false ;
+    
+       //user form object 
       userForm: any;
+      //it will be true when we go in submit functiona nd thenw e will so the errors 
        submitetd!:any ;
-       haveActivity:boolean = false ;
+     
       
 
        constructor( public service:APICallService,private formBuilder: FormBuilder)
@@ -24,6 +28,7 @@ export class AddPriceComponent {
          
        }
 
+// first time it is called for fetching event data for admin which is not published
   ngOnInit(): void {
     this.Message = null ;
     console.log(this.ActivityData);
@@ -37,7 +42,8 @@ export class AddPriceComponent {
        if(data.ID != 0)
        {
            this.EventData = data.ArrayOfResponse;
-            this.haveEvent = true ;
+       
+           
             console.log(data);
          
        }
@@ -62,7 +68,7 @@ export class AddPriceComponent {
 
   }
 
-
+//this is called when event dropdown is change for fetching that event Activity
   EventChange()
   {
     this.ActivityData = null;
@@ -80,7 +86,7 @@ export class AddPriceComponent {
        if(data.ID != 0)
        {
            this.ActivityData = data.ArrayOfResponse;
-           this.haveActivity = true ;
+         
             console.log(data);
              
        }
@@ -104,6 +110,7 @@ export class AddPriceComponent {
       
   }
 
+  //this API is called for adding a price at the end 
   submitForm(): void {
     this.submitetd = true ;
     console.log("i am in submit form");
@@ -115,21 +122,22 @@ export class AddPriceComponent {
 
     let at = new ActivityEntity();
 
-   // at.EventId = this.userForm.value.EventId ;
+
+    //making object for sending to an API.
     let obj = {
       ActivityId:this.userForm.value.ActivityId ,
       Price:this.userForm.value.Price,
       Flag:"AddPrice"
     }
   console.log("ok");
-   //   console.log('Form data:', this.userForm.value);
-      //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
+  
      this.service.callMethod('PublishOrAddPrice',obj).subscribe(
       {
        next: (data:any)=>{
        
-         
+         //setting message to the our message variable 
            this.Message = data.Message;
+           //resetting an form 
            this.userForm.reset();
            this.submitetd = false ;
            

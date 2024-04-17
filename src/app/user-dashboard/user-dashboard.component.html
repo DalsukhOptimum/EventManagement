@@ -11,11 +11,14 @@
     <div class="box">
         <div class="sidebar">
             <div class="Child">
-                <button type="button" class="Item" Id="Upcoming-Events" (click)="Eventshow('Upcoming-Events')">Upcoming Events</button>
+                <button type="button" class="Item" Id="Upcoming-Events" (click)="Eventshow('EmployeeEvent')">&nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('EmployeeEvent')" [icon]="IconHome"></fa-icon>&nbsp; <b>Home</b></button>
+            </div>
+            <div class="Child">
+                <button type="button" class="Item" Id="Upcoming-Events" (click)="Eventshow('Upcoming-Events')">&nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('Upcoming-Events')" [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Upcoming</b></button>
             </div>
             <div class="Child">
                 <button type="button" class="Item" Id="Ongoing-Events" (click)="Eventshow('Ongoing-Events')">
-                    ongoing Events</button>
+                    &nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('Ongoing-Events')" [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Ongoing Events</b></button>
             </div>
 
         </div>
@@ -45,7 +48,7 @@
                             <td>{{obj.Description}}</td>
                             <td>{{obj.StartDate.toString().slice(0,11)}}</td>
                             <td>{{obj.EndDate.toString().slice(0,11)}} </td>
-                           <td>  <button type="button" class="Item" Id="view-more" class="btn btn-secondary" (click)=" viewmore(i)" >show more</button></td>
+                           <td>  <button type="button" class="Item" Id="view-more" class="btn btn-outline-secondary" (click)=" viewmore(i)" >Show More &nbsp; <fa-icon [icon]="IconInfo"></fa-icon></button></td>
                         </tr>
         
                     </tbody>

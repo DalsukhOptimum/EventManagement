@@ -78,8 +78,7 @@ export class UpdateEventComponent {
   this.EventStartDate=this.EventDataFromService.StartDate.toString().substring(0,10).split('-').reverse().join('-');  ;
   this.EventEndDate = this.EventDataFromService.EndDate.toString().substring(0,10).split('-').reverse().join('-'); 
 
-  //console.log(this.userForm.controls['StartDate'].value);
-  //console.log(this.EventDataFromService);
+
     this.userForm = this.formBuilder.group({
       Name: ['', [Validators.required,Validators.pattern(this.regex)]],
       Description: ['', Validators.required],
@@ -131,24 +130,12 @@ export class UpdateEventComponent {
     ev.Image = (this.userForm.value.image == null)?this.EventDataFromService.Image:this.Base64
     ev.ImageType =(this.userForm.value.image == null)?this.EventDataFromService.ImageType :this.Base64.toString().split('.')[1]
 
-    // const ev = new EventEntity(
-    //   0,
-    //   this.userForm.value.Name,
-    //   // this.route.snapshot.paramMap.get('Id')?.slice(1)!,
-    //   this.userForm.value.Description,
-    //   this.userForm.value.StartDate,
-    //   this.userForm.value.EndDate,
-    //   this.Base64,
-    //   "ok"
-
-    // ) 
+   
 
 
   console.log(this.userForm);
     if (this.userForm?.valid) {
   console.log(this.userForm);
-      //   console.log('Form data:', this.userForm.value);
-      //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
       this.service.callMethod('UpdateEvent', ev).subscribe(
         {
           next: (data: any) => {

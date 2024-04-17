@@ -5,7 +5,6 @@ import { APICallService } from '../api-call.service';
 import { EventEntity } from '../Models/EventEntity';
 
 
-
 @Component({
   selector: 'app-add-event',
   templateUrl: './add-event.component.html',
@@ -13,16 +12,19 @@ import { EventEntity } from '../Models/EventEntity';
 })
 export class AddEventComponent {
 
+  //setting up date here for min and max date in date input
   d = new Date().toISOString().slice(0, 10);
   Base64!: string;
-  regex = new RegExp("^[a-zA-Z ]+$");
+
   
 
+  //this is the function for converting image to base64
   submit(event: any) {
     console.log(event);
     const file = event.target.files[0];
     this.userForm.get('Image').setErrors(null);
     console.log(file);
+    //checking Imaeg Type 
     if (event.target.files[0].type == "image/jpeg" || event.target.files[0].type == "image/png" || event.target.files[0].type == "image/svg+xml") {
 
       if (event.target.files[0].size > 5000) {
@@ -42,7 +44,8 @@ export class AddEventComponent {
           reader.readAsDataURL(file);
         }
       }
-
+  
+      //ifnot in prefered size so set an error
       else {
         this.userForm.get('Image').setErrors({ sizeExceeded: true });
         alert("please select file which have size less than 500kb");
@@ -50,6 +53,7 @@ export class AddEventComponent {
       }
 
     }
+       //if not valid type so generating an error of invalid type
     else {
       alert("please select valid type.. Jpeg,png or svg");
       this.userForm.get('Image').setErrors({ invalidTye: true });
@@ -62,10 +66,12 @@ export class AddEventComponent {
 
 
   userForm: any;
+  //message which is coming from api we will store that in this message variable 
   Message: any;
   Id!: number;
 
-  Flag: boolean = false;
+
+  //at the initial we set and flag as false when we wills ubit it we will set it as true 
   submitetd = false;
   constructor(private formBuilder: FormBuilder, public service: APICallService, private route: ActivatedRoute, private router: Router) {
 
@@ -74,7 +80,7 @@ export class AddEventComponent {
   ngOnInit(): void {
     console.log(this.d);
     this.userForm = this.formBuilder.group({
-      Name: ['', [Validators.required, Validators.pattern(this.regex)]],
+      Name: ['', [Validators.required, Validators.pattern(this.service.NameReg)]],
       Description: ['', Validators.required],
       StartDate: ['', Validators.required],
       EndDate: ['', Validators.required],
@@ -92,26 +98,7 @@ export class AddEventComponent {
     console.log(this.userForm.value);
     console.log(this.userForm.value.Image);
 
-
-
-    // let startYear:number = this.userForm.value.StartDate.substring(0,4);
-    // let startMonth:number = this.userForm.value.StartDate.substring(5,7);
-    // let startDate:number = this.userForm.value.StartDate.substring(8,10);
-    // console.log(startMonth);
-
-
-    // let endtYear:number = this.userForm.value.EndDate.substring(0,4);
-    // let endtMonth:number = this.userForm.value.EndDate.substring(5,7);
-    // let endtDate:number = this.userForm.value.EndDate.substring(8,10);
-    // console.log(endtMonth);
-
-    // if( ((startDate >endtDate) && (startMonth <= endtDate) && (startYear <= endtYear)) || ((startMonth > endtMonth) && (startYear >= endtYear)))
-    //   {
-    //     console.log("aaya chhu");
-    //     this.userForm.get('EndDate').setErrors(null);
-    //     this.userForm.get('EndDate').setErrors({InvalidDateRange:true});
-    //   }
-
+    //making an object for sending in API
     let ev = new EventEntity();
 
     ev.Name = this.userForm.value.Name;
@@ -121,24 +108,12 @@ export class AddEventComponent {
     ev.Image = this.Base64
     ev.ImageType = this.userForm.value.Image.toString().split('.')[1]
 
-    // const ev = new EventEntity(
-    //   0,
-    //   this.userForm.value.Name,
-    //   // this.route.snapshot.paramMap.get('Id')?.slice(1)!,
-    //   this.userForm.value.Description,
-    //   this.userForm.value.StartDate,
-    //   this.userForm.value.EndDate,
-    //   this.Base64,
-    //   "ok"
-
-    // ) 
+   
 
 
-
+   //checking form validation and then calling the API.
     if (this.userForm?.valid) {
 
-      //   console.log('Form data:', this.userForm.value);
-      //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
       this.service.callMethod('AddEvent', ev).subscribe(
         {
           next: (data: any) => {

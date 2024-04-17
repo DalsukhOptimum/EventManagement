@@ -3,6 +3,7 @@ import { APICallService } from '../api-call.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
+import {faTrash,faEdit} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-admin-events',
@@ -10,6 +11,8 @@ import { EventEntity } from '../Models/EventEntity';
   styleUrls: ['./admin-events.component.css']
 })
 export class AdminEventsComponent {
+  Icon = faTrash;
+  editIcon = faEdit ;
   Message!: null;
   EventData!: EventEntity[];
 
@@ -25,6 +28,7 @@ export class AdminEventsComponent {
 
   }
 
+  //it will fetch all the events because for update and delete
   EventFetch()
   {
     this.Message = null;
@@ -56,6 +60,7 @@ export class AdminEventsComponent {
 
   }
 
+  //it will send the EventId for deletion and call the API.
   Delete(EventId:any)
   {
     let obj = {
@@ -86,6 +91,7 @@ export class AdminEventsComponent {
       });
   }
 
+  //this will call the API for deletion and sending an index for finding 9in event array
   Update(Index:any)
   {
     this.service.EventDataService = this.EventData[Index];

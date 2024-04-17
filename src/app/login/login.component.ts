@@ -23,7 +23,7 @@ export class LoginComponent {
     console.log("here i am ");
     this.userForm = this.formBuilder.group({
 
-      Email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      Email: ['', [Validators.required, Validators.pattern(this.service.EmailReg)]],
       Password: ['', Validators.required],
       Flag: ['', Validators.required],
 
@@ -37,11 +37,10 @@ export class LoginComponent {
     console.log(this.userForm);
 
     if (this.userForm?.valid) {
-      //   console.log('Form data:', this.userForm.value);
-      //this.http.post('https://localhost:44315/api/ExpenseManager/RegisterUser',this.userForm.value).subscribe((data)=>console.log(data));
-
+      
       this.service.callMethod('Login', this.userForm.value).subscribe(
         {
+          //when user is loging in setting it's  role and isloggedin as true in session storage 
           next: (data: any) => {
             if (data.ID != 0) {
               sessionStorage.clear();
