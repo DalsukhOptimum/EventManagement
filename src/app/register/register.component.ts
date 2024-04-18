@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { APICallService } from '../api-call.service';
 import { Router } from '@angular/router';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-register',
@@ -13,19 +14,20 @@ export class RegisterComponent {
 
 
   userForm: any;
+  //this is for storing message coming from API.
   Message:any;
+  //we will set it true in the submit form 
   submitted=false ;
 
-  constructor(private formBuilder: FormBuilder,private http:HttpClient,private service:APICallService,private router:Router) {}
+  constructor(public eventServiec:EventService,private formBuilder: FormBuilder,private http:HttpClient,private service:APICallService,private router:Router) {}
 
   ngOnInit(): void {
    
     this.userForm = this.formBuilder.group({
-      name: ['', [Validators.required,Validators.pattern(this.service.NameReg)]],
-     // email: ['', [Validators.required, Validators.email]],
-      email: ['', [Validators.required,Validators.pattern(this.service.EmailReg)]],
+      name: ['', [Validators.required,Validators.pattern(this.eventServiec.NameReg)]],
+      email: ['', [Validators.required,Validators.pattern(this.eventServiec.EmailReg)]],
       address: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(100)]],
-      mobile: ['', [Validators.required, Validators.pattern(this.service.PhoneReg)]],
+      mobile: ['', [Validators.required, Validators.pattern(this.eventServiec.PhoneReg)]],
       Password:['', Validators.required]
     });
    
@@ -34,15 +36,10 @@ export class RegisterComponent {
   submitForm(): void {
    
     this.submitted = true ;
-    console.log("i am in submit form");
-    let body = {
-      "Email":"ok@gmail.com"
-    };
-    console.log(this.userForm);
     if (this.userForm?.valid) {
   //checking the form validation and then send an APi request in API.
 
-     this.service.callMethod('RegisterUser',this.userForm.value).subscribe(
+     this.service.ApiCall('RegisterUser',this.userForm.value).subscribe(
       {
         
      

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APICallService } from '../api-call.service';
 import { EventEntity } from '../Models/EventEntity';
+import { EventService } from '../event.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class AddEventComponent {
 
   //setting up date here for min and max date in date input
   d = new Date().toISOString().slice(0, 10);
+  //for storing base64 image 
   Base64!: string;
 
   
@@ -45,7 +47,7 @@ export class AddEventComponent {
         }
       }
   
-      //ifnot in prefered size so set an error
+      //if not in prefered size so set an error
       else {
         this.userForm.get('Image').setErrors({ sizeExceeded: true });
         alert("please select file which have size less than 500kb");
@@ -73,14 +75,14 @@ export class AddEventComponent {
 
   //at the initial we set and flag as false when we wills ubit it we will set it as true 
   submitetd = false;
-  constructor(private formBuilder: FormBuilder, public service: APICallService, private route: ActivatedRoute, private router: Router) {
+  constructor(public eventServiec:EventService,private formBuilder: FormBuilder, public service: APICallService, private route: ActivatedRoute, private router: Router) {
 
   }
 
   ngOnInit(): void {
     console.log(this.d);
     this.userForm = this.formBuilder.group({
-      Name: ['', [Validators.required, Validators.pattern(this.service.NameReg)]],
+      Name: ['', [Validators.required, Validators.pattern(this.eventServiec.NameReg)]],
       Description: ['', Validators.required],
       StartDate: ['', Validators.required],
       EndDate: ['', Validators.required],
@@ -92,12 +94,8 @@ export class AddEventComponent {
 
 
   submitForm(): void {
-    console.log(this.userForm);
-    this.submitetd = true;
-    console.log("i am in submit form");
-    console.log(this.userForm.value);
-    console.log(this.userForm.value.Image);
 
+    this.submitetd = true;
     //making an object for sending in API
     let ev = new EventEntity();
 
@@ -114,7 +112,7 @@ export class AddEventComponent {
    //checking form validation and then calling the API.
     if (this.userForm?.valid) {
 
-      this.service.callMethod('AddEvent', ev).subscribe(
+      this.service.ApiCall('AddEvent', ev).subscribe(
         {
           next: (data: any) => {
 

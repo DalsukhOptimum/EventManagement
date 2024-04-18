@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { APICallService } from '../api-call.service';
 import { Router } from '@angular/router';
 import {faCalendarPlus,faUpload,faHome} from '@fortawesome/free-solid-svg-icons';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,24 +11,17 @@ import {faCalendarPlus,faUpload,faHome} from '@fortawesome/free-solid-svg-icons'
 })
 export class AdminDashboardComponent {
 
+  //Icons from fortawesome library
    Icon = faCalendarPlus;
    uploadIcon = faUpload ;
    DashboardIcon = faHome;
   ngOnInit():void{
-    this.service.ComponentName = "default";
+    this.eventServiec.ComponentName = "default";
   }
   
-  constructor(public service:APICallService,private route:Router)
+  constructor(public eventServiec:EventService,public service:APICallService,private route:Router)
   {
 
   }
-  ComponentName! :string;
-  //nothing to do with this because we store this variables inj service file
- submit(component:string)
- {
-     this.ComponentName = component
- }
-
-
-
+  //nothing to do with this because we store this variables in service file
 }

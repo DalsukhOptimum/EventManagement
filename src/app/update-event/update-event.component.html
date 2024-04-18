@@ -50,12 +50,10 @@
 
                 <div class="form-group">
                     <label style="float: left;" for="StartDate">StartDate</label>
-                    <input [max]="userForm?.get('EndDate').value" [min]="EventStartDate" [max]="EventEndDate"
+                    <input [min]="d"  [max]="userForm?.get('EndDate').value"  
                         [placeholder]="EventDataFromService.StartDate" type="date" id="StartDate"
                         formControlName="StartDate">
-                    <div *ngIf="userForm?.get('StartDate').errors?.required">
-                        Previous StartDate: {{EventDataFromService.StartDate}}
-                    </div>
+                  
                     <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
                         Please start date
                     </div>
@@ -64,19 +62,15 @@
                 <div class="form-group">
                     <label style="float: left;" for="EndDate">EndDate</label>
 
-                    <input [max]="EventEndDate" [min]="EventStartDate" [min]="userForm?.get('StartDate')?.value"
-                        [placeholder]="EventDataFromService.EndDate" [min]="userForm?.get('StartDate').value"
+                    <input 
+                        [placeholder]="EventDataFromService.EndDate" [min]="d" [min]="userForm?.get('StartDate').value" 
                         type="date" id="EndDate" formControlName="EndDate">
-                    <div *ngIf="userForm?.get('EndDate').errors?.required">
-                        previous EndDate: {{EventDataFromService.EndDate}}
-                    </div>
+                  
                     <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
                         Please enter end date
                     </div>
 
-                    <div *ngIf="userForm?.get('EndDate').errors?.InvalidDateRange && submitetd" class="text-danger">
-                        Please select valid startdate and End date
-                    </div>
+                 
                 </div>
 
                 <div class="form-group">

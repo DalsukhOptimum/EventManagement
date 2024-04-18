@@ -11,7 +11,8 @@
 
     <div class="mycontainer" *ngIf="EventData">
         <div>
-            <h2 style="text-align: center; margin: top 10px; color: black">{{EventData.Name}}</h2>
+            
+            <h2 class="mt-3" style="text-align: center; margin: top 10px; color: black">{{EventData.Name}}</h2>
             <img *ngIf="ImageType == 'jpeg' || ImageType == 'png' || ImageType == 'jpg' " class="custom-Img"
                 [src]="'data:image/jpeg;base64,' + Base64Image" />
             <img *ngIf="ImageType == 'svg'" class="custom-Img" [src]="'data:image/svg+xml;base64,' + Base64Image" />

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ɵafterNextNavigation } from '@angular/router';
 import { APICallService } from '../api-call.service';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-login',
@@ -10,43 +11,49 @@ import { APICallService } from '../api-call.service';
 })
 export class LoginComponent {
 
+ 
   userForm: any;
+  // for storing message which will be coming from backend
   Message: any;
+  //after clicking on submit we will set it to true 
   submitted = false;
 
 
-  constructor(private formBuilder: FormBuilder, private service: APICallService, private router: Router) {
-    this.service.flag = false;
+  constructor(public eventServiec:EventService,private formBuilder: FormBuilder, private service: APICallService, private router: Router) {
+   
   }
 
   ngOnInit(): void {
-    console.log("here i am ");
+  
     this.userForm = this.formBuilder.group({
 
-      Email: ['', [Validators.required, Validators.pattern(this.service.EmailReg)]],
+      Email: ['', [Validators.required, Validators.pattern(this.eventServiec.EmailReg)]],
       Password: ['', Validators.required],
       Flag: ['', Validators.required],
 
     });
-    console.log("i am also at end");
+  
   }
 
+  //calling Login API
   submitForm(): void {
-    console.log("i am in submit form");
+
     this.submitted = true;
     console.log(this.userForm);
 
     if (this.userForm?.valid) {
       
-      this.service.callMethod('Login', this.userForm.value).subscribe(
+      //calling Login API.
+      this.service.ApiCall('Login', this.userForm.value).subscribe(
         {
           //when user is loging in setting it's  role and isloggedin as true in session storage 
           next: (data: any) => {
             if (data.ID != 0) {
-              sessionStorage.clear();
 
-               this.service.IsloggedIn = true ;
-              console.log(data.ID);
+              //first loging out if someone is already login 
+              sessionStorage.clear();
+                 // if login of user so set role as admin otherwise user in session storage 
+               this.eventServiec.IsloggedIn = true ;
               if (this.userForm.value.Flag == "AdminLogin") {
                 sessionStorage.setItem('Role', "Admin");
                 sessionStorage.setItem('IsLoggedIn', String(true));
@@ -59,7 +66,7 @@ export class LoginComponent {
               }
               this.Message = data.Message;
              
-              this.service.flag = true;
+            
               this.userForm.reset();
               this.submitted = false;
 

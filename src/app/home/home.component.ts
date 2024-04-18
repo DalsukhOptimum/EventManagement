@@ -13,6 +13,7 @@ export class HomeComponent {
 
   }
 
+  //this is for going in the Login page
   nextpage(){
     this.router.navigate(['/Login']);
   }

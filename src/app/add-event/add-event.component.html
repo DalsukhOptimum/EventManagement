@@ -19,7 +19,7 @@
 
     <div class="formclass">
       <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-        <h2 class="heading">Add Evente</h2>
+        <h2 class="heading">Add Event</h2>
         <div class="form-group">
           <label style="float: left;" for="Name">Name:</label>
           <input type="text" class="form-control" id="Name" formControlName="Name">
@@ -94,11 +94,11 @@
 
     <div class="prenext">
       <div class="Child">
-        <button type="button" class="btn btn-info" (click)="this.service.ComponentName='default'">Previous</button>
+        <button type="button" class="btn btn-info" (click)="this.eventServiec.ComponentName='default'">Previous</button>
       </div>
   
       <div class="Next">
-        <button type="button" (click)="this.service.ComponentName='Add-Activity'" class="btn btn-info">Next</button>
+        <button type="button" (click)="this.eventServiec.ComponentName='Add-Activity'" class="btn btn-info">Next</button>
       </div>
   
     </div>

@@ -42,16 +42,12 @@ export class PublishComponent {
     let obj = {
       Flag: "AdminEvents"
     }
-    this.service.callMethod('showEventOrActivity', obj).subscribe(
+    this.service.ApiCall('showEventOrActivity', obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {
             //storing object of Event coming from API.
             this.EventData = data.ArrayOfResponse;
-        
-            
-            console.log(data);
-
           }
           else {
             this.Message = data.Message;
@@ -87,7 +83,7 @@ export class PublishComponent {
         Flag: "Publish"
       }
       console.log("ok");
-      this.service.callMethod('PublishOrAddPrice', obj).subscribe(
+      this.service.ApiCall('PublishOrAddPrice', obj).subscribe(
         {
           next: (data: any) => {
 

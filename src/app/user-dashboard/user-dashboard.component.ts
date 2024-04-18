@@ -4,6 +4,7 @@ import { EventEntity } from '../Models/EventEntity';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import {faBookOpenReader,faCalendarDays,faHome} from '@fortawesome/free-solid-svg-icons'
+import { EventService } from '../event.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class UserDashboardComponent {
   Flag! :string 
 
 
-  constructor(private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public eventServiec:EventService,private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -52,18 +53,21 @@ Eventshow(flag:string)
     let obj = {
       Flag: flag 
     }
-    this.service.callMethod('showEventOrActivity', obj).subscribe(
+    this.service.ApiCall('showEventOrActivity', obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
 
 
             console.log(data);
 
           }
-          else {
+          else if(data.ID == 0){
             this.Message = data.Message;
+          }
+          else{
+            this.Message = "soemthing went wrong ";
           }
         },
         Error: (err: Error) => {
@@ -80,7 +84,7 @@ Eventshow(flag:string)
   //when user will click on show more this function will be called 
   // this will store that particular event to service and then redirect to the User Detail page
   viewmore(index: any) {
-    this.service.EventDataService = this.EventData[index];
+    this.eventServiec.EventDataService = this.EventData[index];
     console.log("this is in function ", this.EventData[index]);
   
   

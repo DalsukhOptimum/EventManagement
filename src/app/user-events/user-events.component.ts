@@ -3,6 +3,7 @@ import { APICallService } from '../api-call.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-user-events',
@@ -14,18 +15,20 @@ export class UserEventsComponent {
   EventData!: EventEntity[];
 
 
-  constructor(private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public eventServiec:EventService,private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
   //this is for fetching all the events which is published.
+  //right now i am not using this component i made another component for this.
   ngOnInit(): void {
     this.Message = null;
 
     let obj = {
-      Flag: this.service.UserEventFlag 
+
+      Flag: "EmployeeEvent"
     }
-    this.service.callMethod('showEventOrActivity', obj).subscribe(
+    this.service.ApiCall('showEventOrActivity', obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {
@@ -50,12 +53,10 @@ export class UserEventsComponent {
 
   }
 
-
+//this is for viewing more about event this is redirect to the event detail page 
   viewmore(index: any) {
-    this.service.EventDataService = this.EventData[index];
+    this.eventServiec.EventDataService = this.EventData[index];
     console.log("this is in function ", this.EventData[index]);
-    // let obj = this.EventData.find((obj:any)=>obj.EventId = Id)
-
     this.router.navigate(["/Event-Detail"]);
   }
 

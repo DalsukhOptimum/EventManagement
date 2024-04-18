@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
 import {faTrash,faEdit} from '@fortawesome/free-solid-svg-icons'
+import { EventService } from '../event.service';
 
 @Component({
   selector: 'app-admin-events',
@@ -11,14 +12,17 @@ import {faTrash,faEdit} from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./admin-events.component.css']
 })
 export class AdminEventsComponent {
+  //Icons
   Icon = faTrash;
   editIcon = faEdit ;
+  //initially Message is null and then we will store the message which is coming from Backend
   Message!: null;
+  //in this we will store the EventList come from backend
   EventData!: EventEntity[];
 
 
 
-  constructor(private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(public eventServiec:EventService,private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
 
   }
 
@@ -28,7 +32,7 @@ export class AdminEventsComponent {
 
   }
 
-  //it will fetch all the events because for update and delete
+  //it will fetch all the events  for update and delete
   EventFetch()
   {
     this.Message = null;
@@ -36,7 +40,7 @@ export class AdminEventsComponent {
     let obj = {
       Flag: "AllEvent"
     }
-    this.service.callMethod('showEventOrActivity', obj).subscribe(
+    this.service.ApiCall('showEventOrActivity', obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {
@@ -67,7 +71,7 @@ export class AdminEventsComponent {
       EventId:EventId,
       Flag: "DeleteEvent"
     }
-    this.service.callMethod('PublishOrAddPrice', obj).subscribe(
+    this.service.ApiCall('PublishOrAddPrice', obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {
@@ -94,9 +98,9 @@ export class AdminEventsComponent {
   //this will call the API for deletion and sending an index for finding 9in event array
   Update(Index:any)
   {
-    this.service.EventDataService = this.EventData[Index];
+    this.eventServiec.EventDataService = this.EventData[Index];
 
-    this.service.ComponentName = 'Update-Event'
+    this.eventServiec.ComponentName = 'Update-Event'
   }
 
 

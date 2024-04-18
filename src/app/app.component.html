@@ -15,7 +15,7 @@
 </head>
 <body >
   <nav class="navbar navbar-expand-lg navbar-light bg-custome mynav" >
-    <a class="navbar-brand"  href="#"> <b>Event Management</b></a>
+    <a class="navbar-brand logo" routerLink="/Home"><img src="../assets/Logo.jpg" alt="" width="30" height="30">&nbsp; Event Management</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,9 +27,9 @@
       <form class="form-inline my-2 my-lg-0">
         <button class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" routerLink = "Register">Register</button>
      
-        <button *ngIf="!this.service.IsloggedIn" class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" routerLink = "Login">login</button>
+        <button *ngIf="!this.eventServiec.IsloggedIn" class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" routerLink = "Login">login</button>
 
-<div *ngIf="this.service.IsloggedIn">
+<div *ngIf="this.eventServiec.IsloggedIn">
   <button class="btn btn-outline-secondary my-2 my-sm-0 btn custom-color" type="button" (click)="logout()">Logout</button>
 </div>
       </form>

@@ -5,6 +5,7 @@ import { EventEntity } from '../Models/EventEntity';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivityEntity } from '../Models/ActivityEntity';
 import { startWith } from 'rxjs';
+import { EventService } from '../event.service';
 
 
 @Component({
@@ -27,7 +28,7 @@ export class AddActivityComponent {
   EventData!: EventEntity[]
   userForm: any;
 
-  constructor(public service: APICallService, private formBuilder: FormBuilder) {
+  constructor(public eventServiec:EventService,public service: APICallService, private formBuilder: FormBuilder) {
 
   }
 
@@ -55,7 +56,7 @@ export class AddActivityComponent {
     let obj = {
       Flag: "AdminEvents"
     }
-    this.service.callMethod('showEventOrActivity', obj).subscribe(
+    this.service.ApiCall('showEventOrActivity', obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {
@@ -76,7 +77,7 @@ export class AddActivityComponent {
       });
     this.userForm = this.formBuilder.group({
       EventId: ['', Validators.required],
-      Name: ['', [Validators.required, Validators.pattern(this.service.NameReg)]],
+      Name: ['', [Validators.required, Validators.pattern(this.eventServiec.NameReg)]],
       Description: ['', Validators.required],
       StartDate: ['', Validators.required],
       EndDate: ['', Validators.required],
@@ -87,15 +88,7 @@ export class AddActivityComponent {
   }
   submitForm(): void {
     this.submitetd = true;
-    console.log("i am in submit form");
-    console.log(this.userForm.value);
-    console.log(this.userForm.value.Image);
 
-
-
-
-
-    // console.log(this.userForm);
     //making the ACtivity object and then send in the API call
     let at = new ActivityEntity();
     at.Name = this.userForm.value.Name
@@ -108,7 +101,7 @@ export class AddActivityComponent {
     //check the validation for the form and the call the API.
     if (this.userForm?.valid) {
 
-      this.service.callMethod('AddActivity', at).subscribe(
+      this.service.ApiCall('AddActivity', at).subscribe(
         {
           next: (data: any) => {
 
