@@ -16,7 +16,7 @@ export class AdminEventsComponent {
   Icon = faTrash;
   editIcon = faEdit ;
   //initially Message is null and then we will store the message which is coming from Backend
-  Message!: null;
+  Message!: any;
   //in this we will store the EventList come from backend
   EventData!: EventEntity[];
 
@@ -35,23 +35,26 @@ export class AdminEventsComponent {
   //it will fetch all the events  for update and delete
   EventFetch()
   {
+    console.log("one more time");
     this.Message = null;
 
     let obj = {
       Flag: "AllEvent"
     }
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
 
-
-            console.log(data);
-
           }
-          else {
+          else if(data.ID == 0){
+           this.EventData = undefined!;
             this.Message = data.Message;
+          }
+          else{
+            this.Message = "something went wrong";
+            ;
           }
         },
         Error: (err: Error) => {
@@ -67,23 +70,28 @@ export class AdminEventsComponent {
   //it will send the EventId for deletion and call the API.
   Delete(EventId:any)
   {
+    if(!confirm("Are you Sure???"))
+    {
+         return ;
+    }
+
+    
     let obj = {
       EventId:EventId,
       Flag: "DeleteEvent"
     }
-    this.service.ApiCall('PublishOrAddPrice', obj).subscribe(
+    this.service.PublishOrAddPrice(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID != -1) {
+            
+            console.log("in delete form");
+            //here i am fetching new updated Events.
             this.EventFetch();
-          //  this.EventData = data.ArrayOfResponse;
-
-
-            console.log(data);
-
           }
           else {
-            alert(data.Message);
+            
+            alert("something went wrong");
           //  this.Message = data.Message;
           }
         },

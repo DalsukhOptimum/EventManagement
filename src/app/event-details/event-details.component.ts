@@ -47,7 +47,7 @@ ngOnInit(): void {
     Flag:"ActibityShow"
   }
   //calling the API and storing that list of activity ACtivityData
-  this.service.ApiCall('showEventOrActivity',obj).subscribe(
+  this.service.showEventOrActivity(obj).subscribe(
     {
      next: (data:any)=>{
        if(data.ID != 0)

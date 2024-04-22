@@ -56,17 +56,18 @@ export class AddActivityComponent {
     let obj = {
       Flag: "AdminEvents"
     }
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
-            this.haveEvent = true;
-            console.log(data);
 
           }
-          else {
+          else if(data.ID == 0) {
             this.Message = data.Message;
+          }
+          else{
+            this.Message = "someting went wrong";
           }
         },
         Error: (err: Error) => {
@@ -101,7 +102,7 @@ export class AddActivityComponent {
     //check the validation for the form and the call the API.
     if (this.userForm?.valid) {
 
-      this.service.ApiCall('AddActivity', at).subscribe(
+      this.service.AddActivity(at).subscribe(
         {
           next: (data: any) => {
 

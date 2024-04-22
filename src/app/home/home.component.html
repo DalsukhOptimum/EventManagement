@@ -5,7 +5,19 @@
         </h1>
       <p  style="color: white;" class="para">If you are here  for Event Management system so, you are at the right place, this is the most used Eventmanagement website since 1985 and still we are updating it day by day, so click below and enjoy your Events, so what are you waiting for just start and don't look back again, All The Best!</p>
       <button type="button" class="Item" Id="Add-Event" class="btn btn-secondary" (click)="nextpage()" >Let's Start</button>
+
+      
+
+      <div style="color: white;" class='row' [ngSwitch]="val">  
+        <div *ngSwitchCase=2>One is Pressed</div>  
+        <div *ngSwitchCase=1>Two is Selected</div>  
+        <div *ngSwitchDefault>Default Option</div>  
+    </div>  
     </div>
+
+
+
+
 
   
 

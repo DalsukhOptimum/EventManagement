@@ -64,7 +64,7 @@
 
                     <input 
                         [placeholder]="EventDataFromService.EndDate" [min]="d" [min]="userForm?.get('StartDate').value" 
-                        type="date" id="EndDate" formControlName="EndDate">
+                        type="date" id="EndDate" (change)="chnage()" formControlName="EndDate">
                   
                     <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
                         Please enter end date

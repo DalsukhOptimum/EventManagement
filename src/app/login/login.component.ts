@@ -11,20 +11,19 @@ import { EventService } from '../event.service';
 })
 export class LoginComponent {
 
- 
+
   userForm: any;
-  // for storing message which will be coming from backend
-  Message: any;
   //after clicking on submit we will set it to true 
   submitted = false;
 
 
-  constructor(public eventServiec:EventService,private formBuilder: FormBuilder, private service: APICallService, private router: Router) {
-   
+  constructor(public eventServiec: EventService, private formBuilder: FormBuilder, private service: APICallService, private router: Router) {
+
   }
 
   ngOnInit(): void {
-  
+  sessionStorage.clear();
+  this.eventServiec.IsloggedIn = false ;
     this.userForm = this.formBuilder.group({
 
       Email: ['', [Validators.required, Validators.pattern(this.eventServiec.EmailReg)]],
@@ -32,28 +31,28 @@ export class LoginComponent {
       Flag: ['', Validators.required],
 
     });
-  
+
   }
 
   //calling Login API
   submitForm(): void {
 
     this.submitted = true;
-    console.log(this.userForm);
+
 
     if (this.userForm?.valid) {
-      
+
       //calling Login API.
-      this.service.ApiCall('Login', this.userForm.value).subscribe(
+      this.service.LoginAdminOrUser(this.userForm.value).subscribe(
         {
           //when user is loging in setting it's  role and isloggedin as true in session storage 
           next: (data: any) => {
-            if (data.ID != 0) {
+            if (data.ID == 1) {
 
               //first loging out if someone is already login 
               sessionStorage.clear();
-                 // if login of user so set role as admin otherwise user in session storage 
-               this.eventServiec.IsloggedIn = true ;
+              // if login of user so set role as admin otherwise user in session storage 
+              this.eventServiec.IsloggedIn = true;
               if (this.userForm.value.Flag == "AdminLogin") {
                 sessionStorage.setItem('Role', "Admin");
                 sessionStorage.setItem('IsLoggedIn', String(true));
@@ -64,18 +63,22 @@ export class LoginComponent {
                 sessionStorage.setItem('IsLoggedIn', String(true));
                 this.router.navigate(["/User-Dashboard"]);
               }
-              this.Message = data.Message;
-             
-            
-              this.userForm.reset();
-              this.submitted = false;
 
 
 
+
+
+
+            }
+            else if (data.ID == 0) {
+              alert(data.Message);
             }
             else {
-              this.Message = data.Message;
+              alert(data.Message);
             }
+
+            this.userForm.reset();
+            this.submitted = false;
           },
           Error: (err: Error) => {
             window.alert("ENTER VALID credetails");
@@ -84,6 +87,7 @@ export class LoginComponent {
             this.submitted = false;
 
           }
+
 
         }
       );

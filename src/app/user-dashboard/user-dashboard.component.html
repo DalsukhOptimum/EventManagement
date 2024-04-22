@@ -10,15 +10,15 @@
 <body>
     <div class="box">
         <div class="sidebar">
-            <div class="Child">
-                <button type="button" class="Item" Id="Upcoming-Events" (click)="Eventshow('EmployeeEvent')">&nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('EmployeeEvent')" [icon]="IconHome"></fa-icon>&nbsp; <b>Home</b></button>
+            <div class="Child" (click)="Eventshow('EmployeeEvent')">
+                <button type="button" class="Item" Id="Upcoming-Events" >&nbsp; &nbsp; <fa-icon class="iconclass"  [icon]="IconHome"></fa-icon>&nbsp; <b>Home</b></button>
             </div>
-            <div class="Child">
-                <button type="button" class="Item" Id="Upcoming-Events" (click)="Eventshow('Upcoming-Events')">&nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('Upcoming-Events')" [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Upcoming</b></button>
+            <div class="Child" (click)="Eventshow('Upcoming-Events')">
+                <button type="button" class="Item" Id="Upcoming-Events" >&nbsp; &nbsp; <fa-icon class="iconclass"  [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Upcoming</b></button>
             </div>
-            <div class="Child">
-                <button type="button" class="Item" Id="Ongoing-Events" (click)="Eventshow('Ongoing-Events')">
-                    &nbsp; &nbsp; <fa-icon class="iconclass" (click)="Eventshow('Ongoing-Events')" [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Ongoing Events</b></button>
+            <div class="Child" (click)="Eventshow('Ongoing-Events')">
+                <button type="button" class="Item" Id="Ongoing-Events" >
+                    &nbsp; &nbsp; <fa-icon class="iconclass"  [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Ongoing Events</b></button>
             </div>
 
         </div>

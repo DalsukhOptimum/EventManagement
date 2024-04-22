@@ -125,12 +125,18 @@ export class UpdateEventComponent {
 
   
     if (this.userForm?.valid) {
-      this.service.ApiCall('UpdateEvent', ev).subscribe(
+      this.service.UpdateEvent(ev).subscribe(
         {
           next: (data: any) => {
+           if(data.ID != -1)
+            {
+              this.Message = data.Message;
+            }
+            else{
+              this.Message = "somethng went wrong";
+            }
 
-
-            this.Message = data.Message;
+            
             //reseeting the form after clicking 
             this.userForm.reset();
             this.submitetd = false;
@@ -148,5 +154,9 @@ export class UpdateEventComponent {
 
     }
   }
+  chnage()
 
+  {
+    alert("");
+  }
 }

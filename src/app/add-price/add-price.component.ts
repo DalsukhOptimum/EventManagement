@@ -26,7 +26,7 @@ export class AddPriceComponent {
 
   constructor(public eventServiec:EventService,public service: APICallService, private formBuilder: FormBuilder) {
 
-  }
+  } 
 
   // first time it is called for fetching event data for admin which is not published
   ngOnInit(): void {
@@ -36,18 +36,21 @@ export class AddPriceComponent {
     let obj = {
       Flag: "AdminEvents"
     }
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
 
 
             console.log(data);
 
           }
-          else {
+          else if(data.ID == 0) {
             this.Message = data.Message;
+          }
+          else{
+            this.Message = "something went wrong";
           }
         },
         Error: (err: Error) => {
@@ -77,20 +80,21 @@ export class AddPriceComponent {
       Flag: "AdminActibityShow"
     }
 
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             this.ActivityData = data.ArrayOfResponse;
-
-            console.log(data);
-
           }
-          else {
+          else if(data.ID == 0) {
             this.Message = data.Message;
+            console.log(this.ActivityData)
             this.userForm.reset(this.userForm.value);
             this.userForm.reset();
 
+          }
+          else{
+            this.Message = "something went wrong";
           }
         },
         Error: (err: Error) => {
@@ -126,7 +130,7 @@ export class AddPriceComponent {
       }
       console.log("ok");
 
-      this.service.ApiCall('PublishOrAddPrice', obj).subscribe(
+      this.service.PublishOrAddPrice(obj).subscribe(
         {
           next: (data: any) => {
 

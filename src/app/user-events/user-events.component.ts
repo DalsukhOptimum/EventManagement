@@ -28,7 +28,7 @@ export class UserEventsComponent {
 
       Flag: "EmployeeEvent"
     }
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
           if (data.ID != 0) {

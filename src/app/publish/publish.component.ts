@@ -42,15 +42,18 @@ export class PublishComponent {
     let obj = {
       Flag: "AdminEvents"
     }
-    this.service.ApiCall('showEventOrActivity', obj).subscribe(
+    this.service.showEventOrActivity(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != 0) {
+          if (data.ID == 1) {
             //storing object of Event coming from API.
             this.EventData = data.ArrayOfResponse;
           }
-          else {
+          else if(data.ID == 0) {
             this.Message = data.Message;
+          }
+          else{
+            this.Message = "something went wrong";
           }
         },
         Error: (err: Error) => {
@@ -83,14 +86,21 @@ export class PublishComponent {
         Flag: "Publish"
       }
       console.log("ok");
-      this.service.ApiCall('PublishOrAddPrice', obj).subscribe(
+      this.service.PublishOrAddPrice(obj).subscribe(
         {
           next: (data: any) => {
 
-
-            this.Message = data.Message;
-            this.userForm.reset();
-            this.submitetd = false;
+                if(data.ID != -1)
+                  {
+                    this.Message = data.Message;
+                  
+                  }
+                  else{
+                    this.Message = "something went wrong";
+                  }
+            
+                   this.userForm.reset();
+                   this.submitetd = false;
 
           },
           Error: (err: Error) => {

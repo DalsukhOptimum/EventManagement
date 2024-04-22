@@ -76,11 +76,10 @@ export class AddEventComponent {
   //at the initial we set and flag as false when we wills ubit it we will set it as true 
   submitetd = false;
   constructor(public eventServiec:EventService,private formBuilder: FormBuilder, public service: APICallService, private route: ActivatedRoute, private router: Router) {
-
+    
   }
 
   ngOnInit(): void {
-    console.log(this.d);
     this.userForm = this.formBuilder.group({
       Name: ['', [Validators.required, Validators.pattern(this.eventServiec.NameReg)]],
       Description: ['', Validators.required],
@@ -112,14 +111,21 @@ export class AddEventComponent {
    //checking form validation and then calling the API.
     if (this.userForm?.valid) {
 
-      this.service.ApiCall('AddEvent', ev).subscribe(
+      this.service.AddEvent(ev).subscribe(
         {
           next: (data: any) => {
+             if(data.ID != -1)
+              {
+                this.Message = data.Message;
+                
+              }
+              else{
+                this.Message = "something went wrong";
+              }
+              this.userForm.reset();
+                this.submitetd = false;
 
-
-            this.Message = data.Message;
-            this.userForm.reset();
-            this.submitetd = false;
+       
 
           },
           Error: (err: Error) => {

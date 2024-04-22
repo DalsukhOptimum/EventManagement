@@ -19,13 +19,13 @@
     display: flex;
 }
 .Item{
-    margin: 10px;
-    margin-left: 50px;
+     margin: 10px;
+    margin-left: 50px; 
     border: none;
     display: flex;
   
     background-color: none;
-}
+} 
 .Child
 {
     padding: 10px;
@@ -34,7 +34,7 @@
     
 }
 button{
-    background-color:aliceblue;
+  background-color: transparent
 
   }
 
@@ -64,4 +64,12 @@ button{
 
   .iconclass :hover{
     cursor: pointer;
+  }
+
+
+  .Child:hover,button:hover,.rowitem:hover {
+    background-color: rgb(158, 167, 179);
+    cursor: pointer;
+    /* background-color:aliceblue; */
+
   }

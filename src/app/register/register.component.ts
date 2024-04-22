@@ -39,15 +39,21 @@ export class RegisterComponent {
     if (this.userForm?.valid) {
   //checking the form validation and then send an APi request in API.
 
-     this.service.ApiCall('RegisterUser',this.userForm.value).subscribe(
+     this.service.RegisterUser(this.userForm.value).subscribe(
       {
         
      
         next: (data:any)=>{
          
           //setting message which is coming from API.
-            console.log(data.ID);
-            this.Message = data.Message;
+          if(data.ID != -1)
+            {
+              this.Message = data.Message;
+            }
+          else{
+            this.Message ="something went wrong";
+          }
+            
            
           this.userForm.reset();
            this.submitted = false ;

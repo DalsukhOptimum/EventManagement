@@ -29,10 +29,10 @@
 
     
 }
-.sidebar button{
+/* .sidebar button{
      background-color:aliceblue; 
 
-  }
+  }  */
 
   .component{
     background-color: #bbc0c5; 
@@ -52,3 +52,10 @@
     margin-right:10px;
     border-radius: 10px solid black;
 }
+
+.Child:hover,button:hover,.Item:hover {
+    background-color: rgb(175, 190, 209);
+    cursor: pointer;
+
+
+  }

@@ -16,12 +16,13 @@ export class AdminDashboardComponent {
    uploadIcon = faUpload ;
    DashboardIcon = faHome;
   ngOnInit():void{
+    console.log("i am in ngonintit");
     this.eventServiec.ComponentName = "default";
   }
   
   constructor(public eventServiec:EventService,public service:APICallService,private route:Router)
   {
-
+   console.log("i am in dashboard")
   }
   //nothing to do with this because we store this variables in service file
 }
