@@ -3,7 +3,7 @@ import { APICallService } from '../api-call.service';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
-import {faTrash,faEdit} from '@fortawesome/free-solid-svg-icons'
+import {faTrash,faEdit,faUpload,faDownload} from '@fortawesome/free-solid-svg-icons'
 import { EventService } from '../event.service';
 
 @Component({
@@ -15,6 +15,8 @@ export class AdminEventsComponent {
   //Icons
   Icon = faTrash;
   editIcon = faEdit ;
+  PublishIcon = faUpload ;
+  UnPublishIcon = faDownload ;
   //initially Message is null and then we will store the message which is coming from Backend
   Message!: any;
   //in this we will store the EventList come from backend
@@ -49,7 +51,7 @@ export class AdminEventsComponent {
 
           }
           else if(data.ID == 0){
-           this.EventData = undefined!;
+           this.EventData = [];
             this.Message = data.Message;
           }
           else{
@@ -68,7 +70,7 @@ export class AdminEventsComponent {
   }
 
   //it will send the EventId for deletion and call the API.
-  Delete(EventId:any)
+  Operation(EventId:any,flag:string)
   {
     if(!confirm("Are you Sure???"))
     {
@@ -78,17 +80,20 @@ export class AdminEventsComponent {
     
     let obj = {
       EventId:EventId,
-      Flag: "DeleteEvent"
+      Flag: flag
     }
     this.service.PublishOrAddPrice(obj).subscribe(
       {
         next: (data: any) => {
-          if (data.ID != -1) {
-            
-            console.log("in delete form");
+          if (data.ID == 1) {
             //here i am fetching new updated Events.
             this.EventFetch();
+            
           }
+          else if(data.ID == 0)
+            {
+              alert(data.Message);
+            }
           else {
             
             alert("something went wrong");

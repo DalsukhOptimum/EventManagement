@@ -1,4 +1,3 @@
-<!-- <input type="file" name="" id="ok" (change) = "submit($event)"> -->
 
 
 <!DOCTYPE html>
@@ -17,9 +16,9 @@
 
     <div class="container" EventDataFromService>
 
-        <div class="Message mt-3" style="color: white;"><b> if you Update the Event so activities which is not between
+        <!-- <div class="Message mt-3" style="color: white;"><b> if you Update the Event so activities which is not between
                 updated date will be deleted automatically</b>
-        </div>
+        </div> -->
         <div class="formclass">
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
                 <h2 class="heading">Update Evente</h2>
@@ -50,10 +49,10 @@
 
                 <div class="form-group">
                     <label style="float: left;" for="StartDate">StartDate</label>
-                    <input [min]="d"  [max]="userForm?.get('EndDate').value"  
+                    <input [min]="d" [max]="userForm?.get('EndDate').value" (change)="AlertMessage()"
                         [placeholder]="EventDataFromService.StartDate" type="date" id="StartDate"
                         formControlName="StartDate">
-                  
+
                     <div *ngIf="userForm?.get('StartDate').errors?.required && submitetd" class="text-danger">
                         Please start date
                     </div>
@@ -62,15 +61,15 @@
                 <div class="form-group">
                     <label style="float: left;" for="EndDate">EndDate</label>
 
-                    <input 
-                        [placeholder]="EventDataFromService.EndDate" [min]="d" [min]="userForm?.get('StartDate').value" 
-                        type="date" id="EndDate" (change)="chnage()" formControlName="EndDate">
-                  
+                    <input [placeholder]="EventDataFromService.EndDate" [min]="d"
+                        [min]="userForm?.get('StartDate').value" type="date" id="EndDate" (change)="AlertMessage()"
+                        formControlName="EndDate">
+
                     <div *ngIf="userForm?.get('EndDate').errors?.required && submitetd" class="text-danger">
                         Please enter end date
                     </div>
 
-                 
+
                 </div>
 
                 <div class="form-group">
@@ -101,19 +100,24 @@
             </form>
 
         </div>
+
+        <div class="prenext">
+            <div class="Child">
+                <button type="button" class="btn btn-info"
+                    (click)="this.eventServiec.ComponentName='default'">Previous</button>
+            </div>
+        </div>
     </div>
+
+
+
 
     <div *ngIf="!EventDataFromService">
         <div *ngIf="Message" class="text-danger mt-3">
-          <b>Please first select Event to update</b>
-          
+            <b>Please first select Event to update</b>
+
         </div>
-      </div>
-
-
-
-
-
+    </div>
 
 </body>
 

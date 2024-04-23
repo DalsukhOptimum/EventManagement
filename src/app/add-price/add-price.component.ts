@@ -31,7 +31,7 @@ export class AddPriceComponent {
   // first time it is called for fetching event data for admin which is not published
   ngOnInit(): void {
     this.Message = null;
-    console.log(this.ActivityData);
+   
 
     let obj = {
       Flag: "AdminEvents"
@@ -41,10 +41,6 @@ export class AddPriceComponent {
         next: (data: any) => {
           if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
-
-
-            console.log(data);
-
           }
           else if(data.ID == 0) {
             this.Message = data.Message;
@@ -73,7 +69,7 @@ export class AddPriceComponent {
   EventChange() {
     this.ActivityData = null;
     this.Message = null;
-    console.log("aaya chhe");
+
 
     let obj = {
       EventId: this.userForm.value.EventId,
@@ -88,7 +84,7 @@ export class AddPriceComponent {
           }
           else if(data.ID == 0) {
             this.Message = data.Message;
-            console.log(this.ActivityData)
+
             this.userForm.reset(this.userForm.value);
             this.userForm.reset();
 
@@ -112,10 +108,6 @@ export class AddPriceComponent {
   //this API is called for adding a price at the end 
   submitForm(): void {
     this.submitetd = true;
-    console.log("i am in submit form");
-    console.log(this.userForm.value);
-    console.log(this.userForm.value.Image);
-
     if (this.userForm?.valid) {
 
 

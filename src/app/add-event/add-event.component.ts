@@ -51,7 +51,9 @@ export class AddEventComponent {
       else {
         this.userForm.get('Image').setErrors({ sizeExceeded: true });
         alert("please select file which have size less than 500kb");
-
+        (document.getElementById("Image") as HTMLInputElement).value = "";
+   
+     
       }
 
     }
@@ -59,7 +61,7 @@ export class AddEventComponent {
     else {
       alert("please select valid type.. Jpeg,png or svg");
       this.userForm.get('Image').setErrors({ invalidTye: true });
-      this.userForm.value.image = null;
+      (document.getElementById("Image") as HTMLInputElement).value = "";
     }
 
     console.log("i am outside");
@@ -95,6 +97,7 @@ export class AddEventComponent {
   submitForm(): void {
 
     this.submitetd = true;
+    console.log(this.userForm);
     //making an object for sending in API
     let ev = new EventEntity();
 

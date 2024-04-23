@@ -88,3 +88,15 @@ button{
      margin-left: 20px;
     float: left;
 }
+
+.prenext{
+    margin-top: 10px;
+ 
+}
+
+.Child{
+    display: inline;
+    float: left;
+  padding: 0px;
+    margin-right: 20px;
+}

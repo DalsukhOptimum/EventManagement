@@ -15,7 +15,7 @@
 
 <body>
 
-    <div *ngIf="EventData" class="container">
+    <div *ngIf="EventData.length > 0" class="container">
 
         <div class="formclass">
             <form [formGroup]="userForm" (ngSubmit)="submitForm()">
@@ -45,7 +45,7 @@
 
     </div>
 
-    <div *ngIf="!EventData">
+    <div *ngIf="EventData.length === 0">
         <div *ngIf="Message" class="Message mt-3" style="color: red;">
             <b> {{Message}}</b>
             <p>Firsr add some Events to Publish</p>

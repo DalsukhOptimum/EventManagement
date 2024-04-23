@@ -36,9 +36,6 @@ export class PublishComponent {
   //this is function for fetching all the events
   getEvents()
   {
-    this.Message = null;
-
-    
     let obj = {
       Flag: "AdminEvents"
     }
@@ -50,6 +47,7 @@ export class PublishComponent {
             this.EventData = data.ArrayOfResponse;
           }
           else if(data.ID == 0) {
+            this.EventData = [];
             this.Message = data.Message;
           }
           else{
@@ -93,6 +91,7 @@ export class PublishComponent {
                 if(data.ID != -1)
                   {
                     this.Message = data.Message;
+                    this.getEvents();
                   
                   }
                   else{

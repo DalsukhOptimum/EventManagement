@@ -44,10 +44,6 @@ export class AddActivityComponent {
         this.max = element.EndDate.toString().substring(0, 10).split('-').reverse().join('-') + "T00:00";
       }
     });
-
-    console.log("this is start", this.min);
-    console.log("this is end", this.max);
-
   }
 
 

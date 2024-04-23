@@ -59,7 +59,8 @@ const routes: Routes = [
 },
 {
   path:"Home",component:HomeComponent,
-}
+},
+{ path: "**", redirectTo: "Login" },
 
 ];
 

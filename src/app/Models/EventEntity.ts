@@ -7,4 +7,5 @@ export class EventEntity {
     Image!:string;
     Flag!:string
     ImageType!:string 
+    IsPublish!:number
   }

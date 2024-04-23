@@ -79,8 +79,6 @@ export class UpdateEventComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.userForm);
-
     this.EventDataFromService = this.eventServiec.EventDataService;
     if(!this.EventDataFromService)
       {
@@ -154,9 +152,8 @@ export class UpdateEventComponent {
 
     }
   }
-  chnage()
-
+  AlertMessage()
   {
-    alert("");
+    alert("if you Update the Event so activities which is not between updated date will be deleted automatically");
   }
 }

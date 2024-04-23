@@ -9,7 +9,7 @@
 
 <body>
 
-    <div *ngIf="EventData" class="my-class">
+    <div *ngIf="EventData.length > 0" class="my-class">
         <h2 style="text-align: center;margin-bottom: 21px;margin-top: 10px;"> Events </h2>
         <div class="tbl border border-secondary   ">
             <table class="table table-bordered tb-custom table-striped ">
@@ -22,6 +22,7 @@
                         <th scope="col">EndDate</th>
                         <th scope="col">Delete</th>
                         <th scope="col">Update</th>
+                        <th scope="col">Action</th>
 
 
                     </tr>
@@ -34,9 +35,13 @@
                         <td>{{obj.StartDate.toString().slice(0,10)}}</td>
                         <td>{{obj.EndDate.toString().slice(0,10) }} </td>
                         <td> <button type="button" class="Item" Id="Delete-Event" class="btn btn-outline-secondary"
-                                (click)=" Delete(obj.EventId)"><fa-icon [icon]="Icon"></fa-icon> Delete</button></td>
-                        <td> <button type="button" class="Item" Id="Update-Event" class="btn btn-outline-secondary"
+                                (click)=" Operation(obj.EventId,'DeleteEvent')"><fa-icon [icon]="Icon"></fa-icon> Delete</button></td>
+                        <td> <button [disabled]="obj.IsPublish == 1" type="button" class="Item" Id="Update-Event" class="btn btn-outline-secondary"
                                 (click)=" Update(i)"><fa-icon [icon]="editIcon"></fa-icon> Update</button></td>
+                        <td *ngIf="obj.IsPublish == 1" > <button type="button" class="Item" Id="Publish" class="btn btn-outline-secondary"
+                                (click)=" Operation(obj.EventId,'UnPublish')"><fa-icon [icon]="UnPublishIcon"></fa-icon> UnPublish</button></td>
+                        <td *ngIf="obj.IsPublish != 1"> <button type="button" class="Item" Id="Publish" class="btn btn-outline-secondary"
+                                (click)=" Operation(obj.EventId,'Publish')"><fa-icon [icon]="PublishIcon"></fa-icon> Publish</button></td>
                     </tr>
 
                 </tbody>
