@@ -119,11 +119,18 @@ export class AddEventComponent {
           next: (data: any) => {
              if(data.ID != -1)
               {
+                
                 this.Message = data.Message;
+                setTimeout(() => {
+                  this.Message = "";
+                }, 5000);
                 
               }
               else{
                 this.Message = "something went wrong";
+                setTimeout(() => {
+                  this.Message = "";
+                }, 5000);
               }
               this.userForm.reset();
                 this.submitetd = false;

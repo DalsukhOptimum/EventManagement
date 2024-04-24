@@ -37,6 +37,8 @@
                             <th scope="col">Description</th>
                             <th scope="col">StartDate</th>
                             <th scope="col">EndDate</th>
+                            <th scope="col">View</th>
+                            <th scope="col">Start In</th>
                             
         
                         </tr>
@@ -49,6 +51,7 @@
                             <td>{{obj.StartDate.toString().slice(0,11)}}</td>
                             <td>{{obj.EndDate.toString().slice(0,11)}} </td>
                            <td>  <button type="button" class="Item" Id="view-more" class="btn btn-outline-secondary" (click)=" viewmore(i)" >Show More &nbsp; <fa-icon [icon]="IconInfo"></fa-icon></button></td>
+                           <td>{{obj.StartDate.toString().slice(0,10)| custompipe }}</td>
                         </tr>
         
                     </tbody>

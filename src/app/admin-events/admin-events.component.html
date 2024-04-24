@@ -23,6 +23,8 @@
                         <th scope="col">Delete</th>
                         <th scope="col">Update</th>
                         <th scope="col">Action</th>
+                        <th scope="col">Start In</th> 
+                    
 
 
                     </tr>
@@ -30,7 +32,7 @@
                 <tbody>
                     <tr *ngFor="let obj of EventData;let i = index">
                         <td>{{i+1}}</td>
-                        <td>{{obj.Name}}</td>
+                        <td>{{obj.Name }}</td>
                         <td>{{obj.Description}}</td>
                         <td>{{obj.StartDate.toString().slice(0,10)}}</td>
                         <td>{{obj.EndDate.toString().slice(0,10) }} </td>
@@ -42,6 +44,7 @@
                                 (click)=" Operation(obj.EventId,'UnPublish')"><fa-icon [icon]="UnPublishIcon"></fa-icon> UnPublish</button></td>
                         <td *ngIf="obj.IsPublish != 1"> <button type="button" class="Item" Id="Publish" class="btn btn-outline-secondary"
                                 (click)=" Operation(obj.EventId,'Publish')"><fa-icon [icon]="PublishIcon"></fa-icon> Publish</button></td>
+                                <td>{{obj.StartDate.toString().slice(0,10) | custompipe}}</td>
                     </tr>
 
                 </tbody>

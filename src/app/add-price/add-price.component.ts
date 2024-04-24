@@ -87,6 +87,9 @@ export class AddPriceComponent {
 
             this.userForm.reset(this.userForm.value);
             this.userForm.reset();
+            setTimeout(() => {
+              this.Message = "";
+            }, 5000);
 
           }
           else{
@@ -125,12 +128,22 @@ export class AddPriceComponent {
       this.service.PublishOrAddPrice(obj).subscribe(
         {
           next: (data: any) => {
-
-            //setting message to the our message variable 
-            this.Message = data.Message;
+                //setting message to the our message variable 
+              if(data.ID != -1 )
+                {
+                  this.Message = data.Message;
+                }
+           
+                else{
+                  this.Message = "something went wrong";
+                }
+            
             //resetting an form 
             this.userForm.reset();
             this.submitetd = false;
+            setTimeout(() => {
+              this.Message = "";
+            }, 5000);
 
 
           },

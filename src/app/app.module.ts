@@ -20,6 +20,7 @@ import { UpdateEventComponent } from './update-event/update-event.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MyPipePipe } from './my-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -36,14 +37,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AdminEventsComponent,
     UpdateEventComponent,
     UserDashboardComponent,
-    HomeComponent
+    HomeComponent,
+    MyPipePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule,
+    RouterModule, 
     FontAwesomeModule,
   ],
   providers: [],

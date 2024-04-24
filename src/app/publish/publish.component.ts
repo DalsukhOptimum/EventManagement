@@ -65,14 +65,6 @@ export class PublishComponent {
   //this is called for publish the Event
   submitForm(): void {
     this.submitetd = true;
-    console.log("i am in submit form");
-    console.log(this.userForm.value);
-    console.log(this.userForm.value.Image);
-
-
-
-
-
 
   //checking form validation and then call the API.
     if (this.userForm?.valid) {
@@ -92,10 +84,16 @@ export class PublishComponent {
                   {
                     this.Message = data.Message;
                     this.getEvents();
+                    setTimeout(() => {
+                      this.Message = "";
+                    }, 5000);
                   
                   }
                   else{
                     this.Message = "something went wrong";
+                    setTimeout(() => {
+                      this.Message = "";
+                    }, 5000);
                   }
             
                    this.userForm.reset();

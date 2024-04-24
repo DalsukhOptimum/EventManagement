@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { EventEntity } from '../Models/EventEntity';
 import { EventService } from '../event.service';
 
+
 @Component({
   selector: 'app-user-events',
   templateUrl: './user-events.component.html',

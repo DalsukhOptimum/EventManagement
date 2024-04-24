@@ -21,6 +21,8 @@
                         <th scope="col">Description</th>
                         <th scope="col">StartDate</th>
                         <th scope="col">EndDate</th>
+                        <!-- <th scope="col">Action</th> -->
+                        <th scope="col">Start In</th>
 
 
                     </tr>
@@ -30,10 +32,12 @@
                         <td>{{i+1}}</td>
                         <td>{{obj.Name}}</td>
                         <td>{{obj.Description}}</td>
-                        <td>{{obj.StartDate}}</td>
+                        <td>{{obj.StartDate }}</td>
                         <td>{{obj.EndDate }} </td>
-                        <td> <button type="button" class="Item" Id="Add-Event" class="btn btn-secondary"
-                                (click)=" viewmore(i)">show more</button></td>
+                         <td> <button type="button" class="Item" Id="Add-Event" class="btn btn-secondary"
+                                (click)=" viewmore(i)">show more</button></td> 
+                        <td>{{obj.StartDate| custompipe }}</td>
+                        
                     </tr>
 
                 </tbody>

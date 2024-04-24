@@ -106,6 +106,9 @@ export class AddActivityComponent {
             this.Message = data.Message;
             this.userForm.reset();
             this.submitetd = false;
+            setTimeout(() => {
+              this.Message = "";
+            }, 5000);
 
           },
           Error: (err: Error) => {

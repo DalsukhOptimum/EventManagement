@@ -33,6 +33,7 @@ export class UserDashboardComponent {
   }
 
   ngOnInit(): void {
+   
     this.Eventshow("EmployeeEvent");
   }
 
@@ -61,7 +62,7 @@ Eventshow(flag:string)
             this.EventData = data.ArrayOfResponse;
           }
           else if(data.ID == 0){
-            this.EventData = []  ;
+           
             this.Message = data.Message;
           }
           else{
