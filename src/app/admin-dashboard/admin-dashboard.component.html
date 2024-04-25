@@ -49,8 +49,15 @@
             <div class="Child" (click)="this.eventServiec.ComponentName='Publish'">
 
                 <button type="button" class="Item" Id="Publish" (click)="this.eventServiec.ComponentName='Publish'">&nbsp;
-                    &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='Add-Event'"
+                    &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='Publish'"
                         [icon]="uploadIcon"></fa-icon>&nbsp; <b>Publish</b></button>
+            </div>
+
+            <div class="Child" (click)="this.eventServiec.ComponentName='calander'">
+
+                <button type="button" class="Item" Id="Publish" (click)="this.eventServiec.ComponentName='calander'">&nbsp;
+                    &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='calander'"
+                        [icon]="calanderIcon"></fa-icon>&nbsp; <b>clander</b></button>
             </div>
 
 
@@ -69,6 +76,7 @@
             <app-add-price class="component" *ngIf="this.eventServiec.ComponentName == 'Add-Price'"></app-add-price>
             <app-publish class="component" *ngIf="this.eventServiec.ComponentName == 'Publish'"></app-publish>
             <app-update-event class="component" *ngIf="this.eventServiec.ComponentName == 'Update-Event'"></app-update-event>
+            <app-calander class="component" *ngIf="this.eventServiec.ComponentName == 'calander'"></app-calander>
 
 
         </div>

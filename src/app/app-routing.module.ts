@@ -15,6 +15,7 @@ import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { UpdateEventComponent } from './update-event/update-event.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { CalanderComponent } from './calander/calander.component';
 
 // sending roles accourding to the component if it is user's component so send user and if admin component so sending admin
 const routes: Routes = [
@@ -61,7 +62,11 @@ const routes: Routes = [
   path:"Home",component:HomeComponent,
 },
 
+{ path: "calander", component:CalanderComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' } },
+
 { path: "**", redirectTo: "Login" },
+
+
 
 ];
 

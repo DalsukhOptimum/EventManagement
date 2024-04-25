@@ -23,26 +23,35 @@ export class MyPipePipe implements PipeTransform {
     let minute = Math.floor(second / 60);
     let hour = Math.floor(minute / 60);
     let day = Math.floor(hour / 24);
+    let Month = Math.floor(day/30);
 
+    let Finalday = day - Month*30 ;
     let finalHour = hour - day * 24;
     let finalMinute = minute - hour * 60;
     let finalSecond = second - minute * 60;
+    
 
     let ans = "";
     if (day == 0) {
-      ans = finalHour + "H " + finalMinute + "M "+finalSecond +"S";
+      ans = finalHour + "Hrs " + finalMinute + "Minutes "+finalSecond +"Seconds";
     }
 
     else if (day == 0 && hour == 0) {
-      ans = day + "D " + finalHour + "H " + finalMinute + "M " +finalSecond +"S";
+      ans = Finalday + "Days " + finalHour + "Hrs " + finalMinute + "Minuts " +finalSecond +"Second";
     }
     else if (day == 0 && hour == 0 && minute == 0) {
-      ans = finalSecond + "S";
+      ans = finalSecond + "Seconds";
+    }
+   
+    
+    else {
+      ans = Finalday + " Days " + finalHour + " Hrs " + finalMinute + " Minuts "+finalSecond +" Seconds";
     }
 
-    else {
-      ans = day + "D " + finalHour + "H " + finalMinute + "M "+finalSecond +"S";
-    }
+    if(Month != 0)
+      {
+        ans = Month+ " Months "+ Finalday + " Days " + finalHour + " Hrs " + finalMinute + " Minuts "+finalSecond +" Seconds";
+      }
 
 
     return ans;

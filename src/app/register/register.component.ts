@@ -48,11 +48,15 @@ export class RegisterComponent {
           //setting message which is coming from API.
           if(data.ID != -1)
             {
+              console.log(data);
               this.Message = data.Message;
             }
           else{
             this.Message ="something went wrong";
           }
+          setTimeout(() => {
+            this.Message = "";
+          }, 3000);
             
            
           this.userForm.reset();

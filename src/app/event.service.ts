@@ -10,7 +10,7 @@ export class EventService {
    //this is some globally used variables
 EventDataService!:EventEntity ;
 ComponentName:string = "default" ;
-IsloggedIn = (sessionStorage.length == 0)?false:true ;
+IsloggedIn = (sessionStorage.length == 0)?false:true ; 
  
  //this is some regular expressions for validations 
 NameReg = new RegExp("^[a-zA-Z ]+$");

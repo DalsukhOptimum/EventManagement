@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EventEntity } from './Models/EventEntity';
-import { Observable } from 'rxjs';
+import { Observable, catchError, filter, map, throwError } from 'rxjs';
+import { Route, Router } from '@angular/router';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ ApiBaseUrl:string = "https://localhost:44341/api/EventModule/"
   'content-type': 'application/json'
 };
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient,private router:Router) { }
 
   // this is method for calling API. 
   // ApiCall(url: string, data: object): any {
@@ -35,7 +36,14 @@ constructor(private http: HttpClient) { }
 
   RegisterUser(data:object):any
   {
-    return this.http.post(this.ApiBaseUrl + "RegisterUser", data).pipe();
+    return this.http.post(this.ApiBaseUrl + "RegisterUser", data).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 400) {
+           this.router.navigate(['login']);
+        }
+        return throwError(error);
+      })
+    )
   }
 
   LoginAdminOrUser(data:object):any
@@ -56,5 +64,10 @@ constructor(private http: HttpClient) { }
   UpdateEvent(data:object):any
   {
     return this.http.post(this.ApiBaseUrl + "UpdateEvent", data).pipe();
+  }
+
+  Calander(data:object):any
+  {
+    return this.http.post(this.ApiBaseUrl + "Calander", data).pipe();
   }
 }

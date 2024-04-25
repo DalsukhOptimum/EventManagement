@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="dropdownclass">
+
+
+        <div class="form-group w-25 custom">
+            <label style="float: left;" for="Flag">Month:</label>
+            <select class="form-control" id="Flag" (change)="ChageYear()">
+                <option value="">Select Type</option>
+                <option value="1">january</option>
+                <option value="2">february</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">septmber</option>
+                <option value="10">octomber</option>
+                <option value="11">nuvember</option>
+                <option value="12">december</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="box">
+        <div class="ok" *ngFor="let n of numSequence(MOnthDay); 
+        let i = index;"> <div class="border border-secondary text-center" style="height: 25px;width: 25px;">{{i+1}}</div>
+            <div *ngFor="let obj of EventData">
+                <div *ngIf="obj.StartDate.slice(0,2) == (i+1).toString()">
+                    <p style="color: green; text-align: center;">{{obj.Name}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

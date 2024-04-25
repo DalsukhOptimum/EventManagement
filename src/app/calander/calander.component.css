@@ -1,0 +1,27 @@
+.ok{
+    height: auto;
+    width: auto;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 5px; 
+    box-shadow: 5px 5px;
+}
+
+.box{
+    display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr  ;
+}
+
+.custom{
+    justify-content: center;
+}
+
+.dropdownclass{
+    display: flex;
+    justify-content: center;
+}
+
+.custombox{
+    width: 100px;
+    height: 100px;
+}

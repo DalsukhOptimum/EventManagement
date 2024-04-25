@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { APICallService } from '../api-call.service';
 import { Router } from '@angular/router';
-import {faCalendarPlus,faUpload,faHome} from '@fortawesome/free-solid-svg-icons';
+import {faCalendarPlus,faUpload,faHome,faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import { EventService } from '../event.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class AdminDashboardComponent {
    Icon = faCalendarPlus;
    uploadIcon = faUpload ;
    DashboardIcon = faHome;
+   calanderIcon = faCalendarAlt ;
   ngOnInit():void{
     console.log("i am in ngonintit");
     this.eventServiec.ComponentName = "default";

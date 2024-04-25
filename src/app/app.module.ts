@@ -21,6 +21,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MyPipePipe } from './my-pipe.pipe';
+import { CalanderComponent } from './calander/calander.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MyPipePipe } from './my-pipe.pipe';
     UpdateEventComponent,
     UserDashboardComponent,
     HomeComponent,
-    MyPipePipe
+    MyPipePipe,
+    CalanderComponent
   ],
   imports: [
     BrowserModule,
