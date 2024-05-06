@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MyPipePipe } from './my-pipe.pipe';
 import { CalanderComponent } from './calander/calander.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { CalanderComponent } from './calander/calander.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule, 
-    FontAwesomeModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

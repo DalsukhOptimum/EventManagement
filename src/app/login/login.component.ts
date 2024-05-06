@@ -27,7 +27,7 @@ export class LoginComponent {
     this.userForm = this.formBuilder.group({
 
       Email: ['', [Validators.required, Validators.pattern(this.eventServiec.EmailReg)]],
-      Password: ['', Validators.required],
+      Password: ['', [Validators.required, Validators.pattern(this.eventServiec.PasswordReg)]],
       Flag: ['', Validators.required],
 
     });

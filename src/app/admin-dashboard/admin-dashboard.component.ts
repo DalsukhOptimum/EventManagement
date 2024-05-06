@@ -4,14 +4,16 @@ import { Router } from '@angular/router';
 import {faCalendarPlus,faUpload,faHome,faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
 import { EventService } from '../event.service';
 
+
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-
+ 
   //Icons from fortawesome library
+  ok = "hello from here";
    Icon = faCalendarPlus;
    uploadIcon = faUpload ;
    DashboardIcon = faHome;

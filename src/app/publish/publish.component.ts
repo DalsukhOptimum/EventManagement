@@ -12,7 +12,7 @@ export class PublishComponent {
   //we will store the message which is coming from backend 
   Message!: any;
   //array of Event object which is coming from API.
-  EventData!: EventEntity[];
+  EventData: EventEntity[] = [];
 
   //user form object for taking an data from html file 
   userForm: any;

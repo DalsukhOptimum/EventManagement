@@ -21,7 +21,7 @@ export class AdminEventsComponent {
   //initially Message is null and then we will store the message which is coming from Backend
   Message!: any;
   //in this we will store the EventList come from backend
-  EventData!: EventEntity[];
+  EventData: EventEntity[] = [];
 
 
 

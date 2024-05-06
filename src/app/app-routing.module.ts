@@ -44,10 +44,10 @@ const routes: Routes = [
   path:"AdminDashboard",component:AdminDashboardComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
 },
 {
-  path:"User-Events",component:UserEventsComponent, canActivate:[MyAuthGuard],data: { role: 'User' }
+  path:"User-Events",component:UserEventsComponent
 },
 {
-  path:"Event-Detail",component:EventDetailsComponent, canActivate:[MyAuthGuard],data: { role: 'User' }
+  path:"Event-Detail",component:EventDetailsComponent, canActivate:[MyAuthGuard],data: { role: 'UserAdmin'}
 },
 {
   path:"Admin-Event",component:AdminEventsComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }

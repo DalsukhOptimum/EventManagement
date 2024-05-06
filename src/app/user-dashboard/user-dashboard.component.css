@@ -54,7 +54,7 @@
 }
 
 .Child:hover,button:hover,.Item:hover {
-  background-color: rgb(158, 167, 179);
+   background-color: rgb(158, 167, 179); 
     /* background-color: rgb(175, 190, 209); */
     cursor: pointer;
 

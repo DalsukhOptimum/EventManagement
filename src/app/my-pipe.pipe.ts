@@ -7,14 +7,15 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MyPipePipe implements PipeTransform {
 
 
+  //transformining time to milisecond and then converting it to the second,minute,hour and days
+
   transform(value: string): string {
     let d = new Date().getTime();
-    console.log("val", value);
     value = value.split('-').reverse().join('-') + "T00:00:00";
     let EventDate = new Date(value);
-    console.log("at", EventDate);
     let msEvent = EventDate.getTime();
     let diff = Math.floor(msEvent - d);
+    //if difference is in zero or min us means event is right now ongoing
     if (diff <= 0) {
       return "ongoing";
     }
@@ -31,6 +32,7 @@ export class MyPipePipe implements PipeTransform {
     let finalSecond = second - minute * 60;
     
 
+    //checking some conditions that minute,second or  hour is zero or not and if it is zero so don't showing them
     let ans = "";
     if (day == 0) {
       ans = finalHour + "Hrs " + finalMinute + "Minutes "+finalSecond +"Seconds";

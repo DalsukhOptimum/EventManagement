@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { APICallService } from '../api-call.service';
@@ -12,6 +12,7 @@ import { EventService } from '../event.service';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
+  @Input() message!: string;
 
   //setting up date here for min and max date in date input
   d = new Date().toISOString().slice(0, 10);
@@ -34,10 +35,6 @@ export class AddEventComponent {
 
         reader.onload = () => {
           const base64: string = reader.result as string;
-          console.log("i am inside");
-
-
-
           console.log(base64.split(',')[1]);
           this.Base64 = base64.split(',')[1];
         };

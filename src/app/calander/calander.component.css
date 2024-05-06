@@ -25,3 +25,10 @@
     width: 100px;
     height: 100px;
 }
+
+.EventName:hover{
+    cursor: pointer;
+   background-color: blanchedalmond;
+}
+
+

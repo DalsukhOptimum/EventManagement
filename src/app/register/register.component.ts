@@ -21,14 +21,17 @@ export class RegisterComponent {
 
   constructor(public eventServiec:EventService,private formBuilder: FormBuilder,private http:HttpClient,private service:APICallService,private router:Router) {}
 
+
+ 
+
   ngOnInit(): void {
    
     this.userForm = this.formBuilder.group({
       name: ['', [Validators.required,Validators.pattern(this.eventServiec.NameReg)]],
       email: ['', [Validators.required,Validators.pattern(this.eventServiec.EmailReg)]],
-      address: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(100)]],
+      address: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(100),Validators.pattern(this.eventServiec.AddressReg)]],
       mobile: ['', [Validators.required, Validators.pattern(this.eventServiec.PhoneReg)]],
-      Password:['', Validators.required]
+      Password:['', [Validators.required, Validators.pattern(this.eventServiec.PasswordReg)]]
     });
    
   }

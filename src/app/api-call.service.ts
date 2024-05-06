@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { EventEntity } from './Models/EventEntity';
 import { Observable, catchError, filter, map, throwError } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { environment } from '../Environments/environment';
 
 
 @Injectable({
@@ -11,8 +12,10 @@ import { Route, Router } from '@angular/router';
 export class APICallService {
 
   //this is base API url for calling the API.
-ApiBaseUrl:string = "https://localhost:44341/api/EventModule/" 
- 
+// ApiBaseUrl:string = "https://localhost:44341/api/EventModule/" 
+
+ApiBaseUrl:string = environment.ApiBase;
+
   httpHeaders= {
   'content-type': 'application/json'
 };

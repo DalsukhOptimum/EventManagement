@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="text/javascript" src="https://www.turnjs.com/lib/turn.min.js "></script>
@@ -47,15 +48,15 @@
                             <option *ngFor="let obj of ActivityData" value={{obj.ActivityId}}>{{obj.Name}}</option>
 
                         </select>
-                        <div *ngIf="userForm?.get('EventId')?.invalid && submitetd" class="text-danger">
+                        <div *ngIf="userForm?.get('ActivityId')?.invalid && submitetd" class="text-danger">
                             select Activity
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label style="float: left;" for="Price">Price</label>
-                        <input type="number" class="form-control" id="Price" formControlName="Price">
-                        <div *ngIf="userForm?.get('Price')?.invalid && submitetd" class="text-danger">
+                        <input  type="number" class="form-control" id="Price" formControlName="Price">
+                    <div *ngIf="userForm?.get('Price')?.invalid && submitetd" class="text-danger">
                             Price is Required
                         </div>
                     </div>

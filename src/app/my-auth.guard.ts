@@ -14,13 +14,20 @@ export class MyAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-   
+  
   //first check that whether user or admin is loggedin or not if not so returning it from here 
       if(!sessionStorage.getItem('IsLoggedIn'))
         {
           this.route.navigate(['/Login']);
           return false ;
         }
+
+          // if component is for  both User And Admin 
+        if(route.data['role'] == 'UserAdmin')
+          {
+            return true ;
+            
+          }
 
         // if component is for  user and login role is user so it will return true  
       if(sessionStorage.getItem('Role') == "User" && route.data['role'] == 'User')

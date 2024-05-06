@@ -21,11 +21,14 @@ export class UserDashboardComponent {
   //message for storing message which is coming from API.
   Message!: any;
   //List of Event data which is coming fom API.
-  EventData!:EventEntity[];
+  EventData:EventEntity[] = [];
   //flag which willd decide that which component to show 
   //this flag will change from HTML buttons 
   // from this we will also show the heading to the HTML page 
   Flag! :string 
+
+  //whicch component to load
+  componentName:string = "UserEvents" ;
 
 
   constructor(public eventServiec:EventService,private service: APICallService, private formBuilder: FormBuilder, private router: Router) {
@@ -34,15 +37,16 @@ export class UserDashboardComponent {
 
   ngOnInit(): void {
    
-    this.Eventshow("EmployeeEvent");
+    this.Eventshow("EmployeeEvent","UserEvents");
   }
 
   //this is when user click on any button this will set the flag and then call the api upon this and this will show event based upon that
-Eventshow(flag:string)
+Eventshow(flag:string, componentName:string)
 {
-  this.EventData = [];
+  this.componentName = componentName;
+   this.EventData = [];
   //if flag is EmployeeEvent show we want to show heading as ALl Eevnts that's why we change the flag 
-  if(flag == "EmployeeEvent")
+   if(flag == "EmployeeEvent")
     {
       this.Flag = "All Events";
     }
@@ -86,6 +90,7 @@ Eventshow(flag:string)
     this.eventServiec.EventDataService = this.EventData[index];
     console.log("this is in function ", this.EventData[index]);
   
+    
   
     this.router.navigate(["/Event-Detail"]);
   }

@@ -43,8 +43,11 @@
       <div class="form-group">
         <label style="float: left;" for="email">Password:</label>
         <input type="password" class="form-control" id="Password" formControlName="Password">
-        <div *ngIf="userForm?.get('Password')?.invalid && submitted" class="text-danger">
+        <div *ngIf="userForm?.get('Password')?.errors?.required && submitted" class="text-danger">
           Password is required.
+        </div>
+        <div *ngIf="userForm?.get('Password').errors?.pattern && submitted" class="text-danger">
+          Please Enter valid Password
         </div>
       </div>
       <div class="mt-5">

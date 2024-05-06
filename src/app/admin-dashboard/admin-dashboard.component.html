@@ -57,7 +57,7 @@
 
                 <button type="button" class="Item" Id="Publish" (click)="this.eventServiec.ComponentName='calander'">&nbsp;
                     &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='calander'"
-                        [icon]="calanderIcon"></fa-icon>&nbsp; <b>clander</b></button>
+                        [icon]="calanderIcon"></fa-icon>&nbsp; <b>calendar</b></button>
             </div>
 
 
@@ -71,7 +71,7 @@
         <div class="Componentdata">
             <app-admin-events class="component my-component "
                 *ngIf="this.eventServiec.ComponentName == 'default'"></app-admin-events>
-            <app-add-event class="component" *ngIf="this.eventServiec.ComponentName == 'Add-Event'"></app-add-event>
+            <app-add-event [message]="ok" class="component"  *ngIf="this.eventServiec.ComponentName == 'Add-Event'"></app-add-event>
             <app-add-activity class="component" *ngIf="this.eventServiec.ComponentName =='Add-Activity'"></app-add-activity>
             <app-add-price class="component" *ngIf="this.eventServiec.ComponentName == 'Add-Price'"></app-add-price>
             <app-publish class="component" *ngIf="this.eventServiec.ComponentName == 'Publish'"></app-publish>

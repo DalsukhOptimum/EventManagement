@@ -17,6 +17,7 @@
 
 .box{
     display: flex;
+  
 }
 .Item{
      margin: 10px;
@@ -73,3 +74,4 @@ button{
     /* background-color:aliceblue; */
 
   }
+

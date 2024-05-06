@@ -6,6 +6,7 @@ import { EventEntity } from '../Models/EventEntity';
 import { EventService } from '../event.service';
 
 
+
 @Component({
   selector: 'app-user-events',
   templateUrl: './user-events.component.html',
@@ -14,6 +15,7 @@ import { EventService } from '../event.service';
 export class UserEventsComponent {
   Message!: any;
   EventData!: EventEntity[];
+
 
 
   constructor(public eventServiec:EventService,private service: APICallService, private formBuilder: FormBuilder, private router: Router) {

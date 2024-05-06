@@ -13,7 +13,7 @@
   <div class="container ">
     <div class="formclass mt-3 mb-3">
       <form [formGroup]="userForm" (ngSubmit)="submitForm()">
-        <h2 class="heading">Register</h2>
+        <h2 class="heading">User Register</h2>
         <div class="form-group">
           <label style="float: left;" for="name">Name</label>
           <input type="text" class="form-control" id="name" formControlName="name">
@@ -43,10 +43,13 @@
           <div *ngIf="userForm?.get('address').errors?.required && submitted" class="text-danger">
             Addressis Required
           </div>
-          <div *ngIf="userForm?.get('address').errors?.minLength && submitted" class="text-danger">
+          <div *ngIf="userForm?.get('address').errors?.pattern && submitted" class="text-danger">
+            Please Enter valid Address
+          </div>
+          <div *ngIf="userForm?.get('address').errors?.minlength && submitted" class="text-danger">
             Please Enter Minimum of length 10
           </div>
-          <div *ngIf="userForm?.get('address').errors?.maxLength && submitted" class="text-danger">
+          <div *ngIf="userForm?.get('address').errors?.maxlength && submitted" class="text-danger">
             Maximum length should not exceed 100
           </div>
 
@@ -66,8 +69,11 @@
         <div class="form-group">
           <label style="float: left;" for="Password">Password</label>
           <input type="text" class="form-control" id="Password" formControlName="Password">
-          <div *ngIf="userForm?.get('Password')?.invalid && submitted" class="text-danger">
+          <div *ngIf="userForm?.get('Password')?.errors?.required && submitted" class="text-danger">
             Password is required.
+          </div>
+          <div *ngIf="userForm?.get('Password').errors?.pattern && submitted" class="text-danger">
+            Please Enter Valid Password
           </div>
         </div>
 
