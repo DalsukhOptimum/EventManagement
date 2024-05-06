@@ -23,35 +23,48 @@ const routes: Routes = [
     path:"",component:HomeComponent, 
    },
 {
- path:"Register",component:RegisterComponent, 
+ path:"Register",component:RegisterComponent,
+
 },
 {
   path:"Login",component:LoginComponent, 
 },
+
+
+
+
 {
-  path:"AddEvent",component:AddEventComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+  path:"AdminDashboard",component:AdminDashboardComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' },
+  children:[
+    {
+      path:'', redirectTo:'Admin-Event',pathMatch:'full'
+    },
+    {
+      path:"AddEvent",component:AddEventComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+    },
+    {
+      path:"AddActivity",component:AddActivityComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+    },
+    {
+      path:"AddPrice",component:AddPriceComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+    },
+    {
+      path:"Publish",component:PublishComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+    },
+    {
+      path:"Admin-Event",component:AdminEventsComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
+    },
+    { path: "calander", component:CalanderComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' } },
+  ]
 },
-{
-  path:"AddActivity",component:AddActivityComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
-},
-{
-  path:"AddPrice",component:AddPriceComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
-},
-{
-  path:"Publish",component:PublishComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
-},
-{
-  path:"AdminDashboard",component:AdminDashboardComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
-},
+{ path: "calanderUser", component:CalanderComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' } },
 {
   path:"User-Events",component:UserEventsComponent
 },
 {
   path:"Event-Detail",component:EventDetailsComponent, canActivate:[MyAuthGuard],data: { role: 'UserAdmin'}
 },
-{
-  path:"Admin-Event",component:AdminEventsComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
-},
+
 {
   path:"Update-Event",component:UpdateEventComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' }
 },
@@ -62,7 +75,7 @@ const routes: Routes = [
   path:"Home",component:HomeComponent,
 },
 
-{ path: "calander", component:CalanderComponent, canActivate:[MyAuthGuard],data: { role: 'Admin' } },
+
 
 { path: "**", redirectTo: "Login" },
 

@@ -11,52 +11,52 @@
     <div class="box">
         <div class="sidebar">
 
-            <div class="Child" (click)="this.eventServiec.ComponentName='default'">
+            <div class="Child" routerLink="/AdminDashboard/Admin-Event" >
                 <div class="rowitem">
-                    <button type="button" class="Item" Id="Add-Event" (click)="this.eventServiec.ComponentName='default'">
-                        <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='default'"
+                    <button type="button" class="Item" Id="Add-Event" >
+                        <fa-icon class="iconclass"
                             [icon]="DashboardIcon"></fa-icon>&nbsp; <b>Home</b></button>
                 </div>
             </div>
 
-            <div class="Child" (click)="this.eventServiec.ComponentName='Add-Event'">
+            <div class="Child" routerLink="/AdminDashboard/AddEvent">
                 <div class="rowitem">
-                    <button type="button" class="Item" Id="Add-Event" (click)="this.eventServiec.ComponentName='Add-Event'">
-                        <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='Add-Event'"
+                    <button type="button" class="Item" Id="Add-Event" >
+                        <fa-icon class="iconclass" 
                             [icon]="Icon"></fa-icon>&nbsp; <b>Add Event</b></button>
                 </div>
             </div>
-            <div class="Child" (click)="this.eventServiec.ComponentName='Add-Activity'">
+            <div class="Child"routerLink="/AdminDashboard/AddActivity">
                 <div class="rowitem">
 
                     <button type="button" class="Item" Id="Add-Activity"
-                        (click)="this.eventServiec.ComponentName='Add-Activity'"> <fa-icon class="iconclass"
-                            (click)="this.eventServiec.ComponentName='Add-Event'" [icon]="Icon"></fa-icon>&nbsp; <b>Add
+                       > <fa-icon class="iconclass"
+                            [icon]="Icon"></fa-icon>&nbsp; <b>Add
                             Activity</b></button>
                 </div>
             </div>
 
-            <div class="Child" (click)="this.eventServiec.ComponentName='Add-Price'">
+            <div  class="Child" routerLink="/AdminDashboard/AddPrice">
                 <div class="rowitem">
 
                     <button type="button" class="Item" Id="Add-Price"
-                        (click)="this.eventServiec.ComponentName='Add-Price'"><fa-icon class="iconclass"
-                            (click)="this.eventServiec.ComponentName='Add-Event'" [icon]="Icon"></fa-icon>&nbsp; <b>Add
+                       ><fa-icon class="iconclass"
+                           [icon]="Icon"></fa-icon>&nbsp; <b>Add
                             Price</b></button>
                 </div>
             </div>
 
-            <div class="Child" (click)="this.eventServiec.ComponentName='Publish'">
+            <div class="Child" routerLink="/AdminDashboard/Publish">
 
-                <button type="button" class="Item" Id="Publish" (click)="this.eventServiec.ComponentName='Publish'">&nbsp;
-                    &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='Publish'"
+                <button type="button" class="Item" Id="Publish" >&nbsp;
+                    &nbsp; <fa-icon class="iconclass" 
                         [icon]="uploadIcon"></fa-icon>&nbsp; <b>Publish</b></button>
             </div>
 
-            <div class="Child" (click)="this.eventServiec.ComponentName='calander'">
+            <div class="Child" routerLink="/AdminDashboard/calander">
 
-                <button type="button" class="Item" Id="Publish" (click)="this.eventServiec.ComponentName='calander'">&nbsp;
-                    &nbsp; <fa-icon class="iconclass" (click)="this.eventServiec.ComponentName='calander'"
+                <button type="button" class="Item" Id="Publish" >&nbsp;
+                    &nbsp; <fa-icon class="iconclass" 
                         [icon]="calanderIcon"></fa-icon>&nbsp; <b>calendar</b></button>
             </div>
 
@@ -69,15 +69,15 @@
         </div>
 
         <div class="Componentdata">
-            <app-admin-events class="component my-component "
+            <!-- <app-admin-events class="component my-component "
                 *ngIf="this.eventServiec.ComponentName == 'default'"></app-admin-events>
             <app-add-event [message]="ok" class="component"  *ngIf="this.eventServiec.ComponentName == 'Add-Event'"></app-add-event>
             <app-add-activity class="component" *ngIf="this.eventServiec.ComponentName =='Add-Activity'"></app-add-activity>
             <app-add-price class="component" *ngIf="this.eventServiec.ComponentName == 'Add-Price'"></app-add-price>
             <app-publish class="component" *ngIf="this.eventServiec.ComponentName == 'Publish'"></app-publish>
             <app-update-event class="component" *ngIf="this.eventServiec.ComponentName == 'Update-Event'"></app-update-event>
-            <app-calander class="component" *ngIf="this.eventServiec.ComponentName == 'calander'"></app-calander>
-
+            <app-calander class="component" *ngIf="this.eventServiec.ComponentName == 'calander'"></app-calander> -->
+            <router-outlet></router-outlet>
 
         </div>
 

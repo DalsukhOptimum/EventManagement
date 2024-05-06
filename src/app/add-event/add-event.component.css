@@ -36,6 +36,7 @@
 
     height: auto;
     width: auto;
+ 
     
     
 }
@@ -60,9 +61,13 @@ button{
 } 
 
  body {
-    background-color: rgb(2 75 121 / 23%);  
+    /* background-color: rgb(2 75 121 / 23%);   */
     background-image: linear-gradient(180deg, rgb(57, 24, 118), rgb(165, 16, 123));
     /* background-size: cover; */
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0px;
+    padding: 0px;
 }  
 
 .prenext{
