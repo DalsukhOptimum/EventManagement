@@ -10,6 +10,7 @@ export class EventService {
    //this is some globally used variables
 EventDataService!:EventEntity ;
 ComponentName:string = "default" ;
+UserEventFlag :string = "EmployeeEvent";
 IsloggedIn = (sessionStorage.length == 0)?false:true ; 
  
  //this is some regular expressions for validations 

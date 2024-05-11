@@ -18,6 +18,7 @@ export class AppComponent{
   logout(){
   sessionStorage.clear();
   this.eventServiec.IsloggedIn = false ;
+  this.eventServiec.UserEventFlag = "EmployeeEvent"
   this.route.navigate(['/Login']);
   }
 }

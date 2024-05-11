@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div style=" display:flex">
+        <button  type="submit" class="btn btn-success custom" (click)="ok()">Submit</button>
+
+    </div> -->
+
+    <div *ngIf="Flag" class="fullbody">
+
+
+
+        <hr style="color: black;">
+        <!-- <div class="ok1 d-flex justify-content-center">
+            <div style="text-align: center;" class="box1" *ngFor="let n of ans;
+    let i = index;">
+               <p *ngIf="n.Eventcnt != 0"> {{n.Eventcnt}}</p>
+            </div>
+        </div> -->
+        <div class="box d-flex justify-content-center my-border">
+            <div style="color: white;" class="ok" [ngStyle]="{'height':n.HeightOfChart, 'background-color':n.Eventcnt != 0? getRandomColor():'black' }" *ngFor="let n of ans;
+        let i = index;">
+        <p *ngIf="n.Eventcnt != 0" style="text-align: center;"> {{n.Eventcnt}}</p>
+               
+            </div>
+            <br>
+        </div>
+        <div class="ok1 d-flex justify-content-center">
+            <div style="text-align: center;" class="box1" *ngFor="let n of ans;
+    let i = index;">
+                {{i+1}}
+            </div>
+        </div>
+        <p style="margin-left: 500px;">Month</p>
+
+    </div>
+
+    <div style="text-align: center;" *ngIf="!Flag">
+        No Evnts
+    </div>
+</body>
+
+</html>

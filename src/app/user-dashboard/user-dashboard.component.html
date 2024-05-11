@@ -10,29 +10,38 @@
 <body>
     <div class="box">
         <div class="sidebar">
-            <div class="Child" (click)="Eventshow('EmployeeEvent','UserEvents')">
+            <div class="Child" routerLink="/User-Dashboard/User-Events" (click)="eventServiec.UserEventFlag = 'EmployeeEvent';this.ngOnInit()">
                 <button type="button" class="btn Item " Id="Upcoming-Events">&nbsp; &nbsp; <fa-icon class="iconclass"
                         [icon]="IconHome"></fa-icon>&nbsp; <b>Home</b></button>
             </div>
-            <div class="Child" (click)="Eventshow('Upcoming-Events','UserEvents')">
+            <div class="Child" routerLink="/User-Dashboard/User-Events-upcoming" (click)="eventServiec.UserEventFlag = 'Upcoming-Events' ;this.ngOnInit()">
                 <button type="button" class=" btn Item" Id="Upcoming-Events">&nbsp; &nbsp; <fa-icon class="iconclass"
                         [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Upcoming</b></button>
             </div>
-            <div class="Child" (click)="Eventshow('Ongoing-Events','UserEvents')">
+            <div class="Child" routerLink="/User-Dashboard/User-Events-ongoing" (click)="eventServiec.UserEventFlag = 'Ongoing-Events';this.ngOnInit()">
                 <button type="button" class=" btn Item" Id="Ongoing-Events">
                     &nbsp; &nbsp; <fa-icon class="iconclass" [icon]="IconfaCalendarDays"></fa-icon>&nbsp; <b>Ongoing
                         Events</b></button>
             </div>
-            <div class="Child" (click)="this.componentName = 'calander'">
+            <div class="Child" routerLink="/User-Dashboard/calanderUser">
                 <button type="button" class=" btn Item" Id="Ongoing-Events">
                     &nbsp; &nbsp; <fa-icon class="iconclass" [icon]="IconfaCalendarDays"></fa-icon>&nbsp;
                     <b>Calander</b></button>
             </div>
+            <div class="Child"  routerLink="/User-Dashboard/chartUser">
+                <button type="button" class=" btn Item" Id="Ongoing-Events">
+                    &nbsp; &nbsp; <fa-icon class="iconclass" [icon]="chartIcon"></fa-icon>&nbsp;
+                    <b>Chart</b></button>
+            </div>
 
         </div>
 
-        <div class="Componentdata" >
+         <div class="Componentdata">
 
+            <router-outlet></router-outlet>
+
+
+<!-- 
             <div *ngIf="EventData.length > 0 && componentName == 'UserEvents'" class="my-class">
                 <h2 style="text-align: center;margin-bottom: 21px;margin-top: 10px;"> {{Flag}} </h2>
 
@@ -69,14 +78,16 @@
                 </div>
             </div>
 
-            <div *ngIf="Message && componentName == 'UserEvents'" class="Message mt-3" style="color: red;"><b> {{Message}}</b>
+            <div *ngIf="Message && componentName == 'UserEvents'" class="Message mt-3" style="color: red;"><b>
+                    {{Message}}</b>
             </div>
 
-      <app-calander *ngIf="componentName == 'calander'"></app-calander>
-           
-        </div>
-      
-   
+            <app-calander *ngIf="componentName == 'calander'"></app-calander>
+            <app-chart  *ngIf="componentName == 'chart'"></app-chart> -->
+
+        </div> 
+
+
 
 
 

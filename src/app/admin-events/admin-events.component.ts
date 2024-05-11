@@ -115,7 +115,7 @@ export class AdminEventsComponent {
   {
     this.eventServiec.EventDataService = this.EventData[Index];
 
-    this.eventServiec.ComponentName = 'Update-Event'
+    this.router.navigate(["Update-Event"])
   }
 
 

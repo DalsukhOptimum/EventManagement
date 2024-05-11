@@ -46,6 +46,12 @@ export class CalanderComponent {
         next: (data: any) => {
           if (data.ID == 1) {
             this.EventData = data.ArrayOfResponse;
+            if(sessionStorage.getItem('Role') == "User")
+              {
+                this.EventData = this.EventData.filter((el)=>{
+                 return el.IsPublish == 1 ;
+                })
+              }
             console.log(this.EventData);
 
           }

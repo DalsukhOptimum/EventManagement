@@ -22,7 +22,15 @@ import { HomeComponent } from './home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MyPipePipe } from './my-pipe.pipe';
 import { CalanderComponent } from './calander/calander.component';
-import { DataTablesModule } from 'angular-datatables';
+import * as Highcharts from 'highcharts';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { ChartComponent } from './chart/chart.component';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +49,8 @@ import { DataTablesModule } from 'angular-datatables';
     UserDashboardComponent,
     HomeComponent,
     MyPipePipe,
-    CalanderComponent
+    CalanderComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +58,10 @@ import { DataTablesModule } from 'angular-datatables';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule, 
-    FontAwesomeModule
+    FontAwesomeModule,
+    HighchartsChartModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

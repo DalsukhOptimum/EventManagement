@@ -10,7 +10,8 @@
 body{
     background-image: linear-gradient(90deg, rgb(206, 201, 216), rgb(144, 199, 165));
     /* margin: 50px; */
-    background-size: scroll;
+     background-size: scroll;
+    background-size: cover; 
  
 }
 .description{

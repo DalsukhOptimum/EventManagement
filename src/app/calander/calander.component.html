@@ -36,8 +36,8 @@
         <div class="ok" *ngFor="let n of numSequence(MOnthDay);
         let i = index;"> <div class="border border-secondary text-center" style="height: 25px;width: 25px;">{{i+1}}</div>
             <div *ngFor="let obj of EventData; let j = index;">
-                <div *ngIf="toNumber(obj.StartDate) == (i+1)">
-                    <p class="EventName" style="color: green; text-align: center;" (click)="load(j)">{{obj.Name}}</p>
+                <div *ngIf="toNumber(obj.StartDate) == (i+1)" [ngStyle]="{'color':obj.IsPublish != 0? 'green':'red' }">
+                    <p class="EventName" style="text-align: center;" (click)="load(j)">{{obj.Name}}</p>
                 </div>
             </div>
         </div>
