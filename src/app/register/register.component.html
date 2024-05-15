@@ -27,13 +27,32 @@
 
         <div class="form-group">
           <label style="float: left;" for="email">Email</label>
-          <input type="email" class="form-control" id="email" formControlName="email">
+          <input (keyup)="ShowInbox()" type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="showTextfield == true">
+            <button type="button" (click)="GenerateOTP()">Generate</button>
+          </div>
+
           <div *ngIf="userForm?.get('email').errors?.required && submitted" class="text-danger">
             Email is Required
           </div>
+          <div *ngIf="OTPMessage && IsOTP != true" class="text-danger">
+            {{OTPMessage}}
+          </div>
+          <div *ngIf="OTPMessage && IsOTP == true" [ngStyle]="{'color':OTPverifies != false? 'green':'red'}">
+            {{OTPMessage}}
+          </div>
+
           <div *ngIf="userForm?.get('email').errors?.pattern && submitted" class="text-danger">
             Please Enter valid Email
           </div>
+        </div>
+
+        <div *ngIf="IsOTP == true" class="form-group">
+          <label style="float: left;" for="OTP">OTP</label>
+          <input type="number" class="form-control" id="OTP" formControlName="OTP">
+          <button (click)="VerifyOTP()">verify</button>
+
+
         </div>
 
 
@@ -82,9 +101,10 @@
 
         <div class="already">
           Already have an account?
-          <a style="color: blue;" routerLink = "/Login" > Login</a>
+          <a style="color: blue;" routerLink="/Login"> Login</a>
         </div>
-        <div *ngIf="Message" class="Message mt-3" style="color: green;"><b> {{Message}}</b>
+        <div *ngIf="Message" class="Message mt-3" [ngStyle]="{'color':OTPverifies != false? 'green':'red'}"><b>
+            {{Message}}</b>
 
         </div>
 

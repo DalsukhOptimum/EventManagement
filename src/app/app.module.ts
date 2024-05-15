@@ -25,6 +25,7 @@ import { CalanderComponent } from './calander/calander.component';
 import * as Highcharts from 'highcharts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { ChartComponent } from './chart/chart.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -51,6 +52,7 @@ import { ChartComponent } from './chart/chart.component';
     MyPipePipe,
     CalanderComponent,
     ChartComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,

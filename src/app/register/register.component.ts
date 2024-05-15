@@ -18,6 +18,17 @@ export class RegisterComponent {
   Message:any;
   //we will set it true in the submit form 
   submitted=false ;
+  //Is Otp field to show
+  IsOTP= false ;
+
+  OTPMessage!:string ;
+
+  OTPverifies = false ;
+  //Previously checked Main
+
+  Email!:string ;
+
+  showTextfield = false ;
 
   constructor(public eventServiec:EventService,private formBuilder: FormBuilder,private http:HttpClient,private service:APICallService,private router:Router) {}
 
@@ -31,52 +42,178 @@ export class RegisterComponent {
       email: ['', [Validators.required,Validators.pattern(this.eventServiec.EmailReg)]],
       address: ['', [Validators.required,Validators.minLength(5), Validators.maxLength(100),Validators.pattern(this.eventServiec.AddressReg)]],
       mobile: ['', [Validators.required, Validators.pattern(this.eventServiec.PhoneReg)]],
-      Password:['', [Validators.required, Validators.pattern(this.eventServiec.PasswordReg)]]
+      Password:['', [Validators.required, Validators.pattern(this.eventServiec.PasswordReg)]],
+      OTP:['', Validators.required]
     });
    
   }
 
-  submitForm(): void {
-   
-    this.submitted = true ;
-    if (this.userForm?.valid) {
-  //checking the form validation and then send an APi request in API.
+  ShowInbox(){
+   if((!this.userForm?.get('email').errors?.required) && !this.userForm?.get('email').errors?.pattern) 
+    {
+          this.showTextfield = true ;
+    }
+    else{
 
-     this.service.RegisterUser(this.userForm.value).subscribe(
+      this.showTextfield = false ;
+    }
+  }
+
+  GenerateOTP(){
+    this.IsOTP=false ;
+    let obj = {
+      "Email":this.userForm.value.email,
+      "Name":"OTP"
+    }
+    this.service.OTPGeneration(obj).subscribe(
       {
         
-     
+       
         next: (data:any)=>{
          
-          //setting message which is coming from API.
-          if(data.ID != -1)
+          if(data.ID == 1)
             {
+              this.IsOTP = true ;
+              
+            }
+          //setting message which is coming from API.
+          else if(data.ID == 0)
+            {
+              this.IsOTP = false ;
               console.log(data);
-              this.Message = data.Message;
+              this.OTPMessage = data.Message;
             }
           else{
-            this.Message ="something went wrong";
+            this.IsOTP = false ;
+            this.OTPMessage ="something went wrong";
           }
           setTimeout(() => {
             this.Message = "";
+            this.OTPMessage= ""
           }, 3000);
-            
-           
-          this.userForm.reset();
-           this.submitted = false ;
          
        },
        Error:(err:Error)=>
        {
          window.alert("ENTER VALID credetails");
-         this.userForm.reset(this.userForm.value);
-         this.userForm.reset();
-           this.submitted = false ;
+    
        }
        
       }
        );
+   
+  }
+
+  VerifyOTP()
+  {
+    let obj = {
+      "Email":this.userForm.value.email,
+      "OTP":this.userForm.value.OTP
+    }
+    this.service.EmailVerification(obj).subscribe(
+      {
+        
+        
+        next: (data:any)=>{
+         
+          if(data.ID == 1)
+            {
+              
+              this.OTPMessage = data.Message;
+              this.OTPverifies = true ;
+              this.IsOTP = false ;
+              this.Email = this.userForm.value.email;
+            }
+          //setting message which is coming from API.
+          else if(data.ID == 0)
+            {
+              console.log(data);
+              this.OTPMessage = data.Message;
+              this.IsOTP = false ;
+              this.userForm.controls['OTP'].reset()
+            }
+          else{
+            this.OTPMessage ="something went wrong";
+            this.IsOTP = false ;
+             this.userForm.controls['OTP'].reset()
+           
+          }
+          setTimeout(() => {
+            this.Message = "";
+            this.OTPMessage= ""
+           
+          }, 5000);;
+            
+       },
+       Error:(err:Error)=>
+       {
+         window.alert("ENTER VALID credetails");
+    
+       }
        
+      }
+       );
+  }
+
+  submitForm(): void {
+   
+    this.submitted = true ;
+
+    if(!this.OTPverifies)
+      {
+        this.submitted = false;
+        this.Message ="first verify the OTP";
+        
+        return;
+      }
+
+      if(this.userForm.value.email != this.Email)
+        {
+          this.Message ="please don't change Email verify again";
+          this.OTPverifies = false ;
+          this.submitted = false;
+          return;
+        }
+    
+
+    if (this.userForm?.valid) {
+  //checking the form validation and then send an APi request in API.
+
+  this.service.RegisterUser(this.userForm.value).subscribe(
+    {
+      
+   
+      next: (data:any)=>{
+       
+        //setting message which is coming from API.
+        if(data.ID != -1)
+          {
+            console.log(data);
+            this.Message = data.Message;
+          }
+        else{
+          this.Message ="something went wrong";
+        }
+        setTimeout(() => {
+          this.Message = "";
+        }, 3000);
+          
+         
+        this.userForm.reset();
+         this.submitted = false ;
+       
+     },
+     Error:(err:Error)=>
+     {
+       window.alert("ENTER VALID credetails");
+       this.userForm.reset(this.userForm.value);
+       this.userForm.reset();
+         this.submitted = false ;
+     }
+     
+    }
+     );
+
     
     }
   }

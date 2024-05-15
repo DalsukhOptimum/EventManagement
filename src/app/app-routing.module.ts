@@ -18,6 +18,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { CalanderComponent } from './calander/calander.component';
 import { HomeComponent } from './home/home.component';
 import { ChartComponent } from './chart/chart.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 // sending roles accourding to the component if it is user's component so send user and if admin component so sending admin
@@ -102,6 +103,9 @@ const routes: Routes = [
 
   {
     path: "Home", component: HomeComponent,
+  },
+  {
+    path: "ForgetPassword", component: ForgetPasswordComponent,
   },
 
 
