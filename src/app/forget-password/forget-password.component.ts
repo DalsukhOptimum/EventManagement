@@ -224,7 +224,7 @@ export class ForgetPasswordComponent {
     if(!this.OTPverifies)
       {
         this.submitted = false;
-        this.Message ="first verify the OTP";
+        this.Message ="first verify the Email";
 
         setTimeout(() => {
           this.Message = "";

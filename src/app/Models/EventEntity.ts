@@ -8,4 +8,5 @@ export class EventEntity {
     Flag!:string
     ImageType!:string 
     IsPublish!:number
+    Istoshow:boolean = false
   }

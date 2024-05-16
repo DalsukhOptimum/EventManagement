@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { APICallService } from '../api-call.service';
 import { Router } from '@angular/router';
 import { EventService } from '../event.service';
+import {faCheck,faXmark} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import { EventService } from '../event.service';
 })
 export class RegisterComponent {
 
-
+  checkIcon = faCheck;
+  UncheckIcon = faXmark;
   userForm: any;
   //this is for storing message coming from API.
   Message:any;
@@ -162,7 +164,7 @@ export class RegisterComponent {
     if(!this.OTPverifies)
       {
         this.submitted = false;
-        this.Message ="first verify the OTP";
+        this.Message ="first verify the Email";
         
         return;
       }

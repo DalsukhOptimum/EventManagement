@@ -62,6 +62,7 @@ export class LoginComponent {
    }
  
    GenerateOTP(){
+    this.Message = "";
      this.IsOTP=false ;
      let obj = {
        "Email":this.userForm.value.Email,
@@ -108,6 +109,7 @@ export class LoginComponent {
  
    VerifyOTP()
    {
+    this.Message = "";
      let obj = {
        "Email":this.userForm.value.Email,
        "OTP":this.userForm.value.OTP
@@ -166,8 +168,9 @@ export class LoginComponent {
 
     if(!this.OTPverifies)
       {
-        this.Message ="first verify the OTP";
-         this.submitted = false;
+        this.Message ="first verify the Email";
+       
+        
         return;
       }
 
@@ -175,7 +178,7 @@ export class LoginComponent {
         {
           this.Message ="please don't change Email verify again";
           this.OTPverifies = false ;
-           this.submitted = false;
+        
           return;
         }
 

@@ -26,7 +26,8 @@
         </div>
 
         <div class="form-group">
-          <label style="float: left;" for="email">Email</label>
+          <label style="float: left;" for="email">Email: <fa-icon class="iconclass"
+            [icon]="OTPverifies?checkIcon:UncheckIcon"></fa-icon></label>
           <input (keyup)="ShowInbox()" type="email" class="form-control" id="email" formControlName="email">
           <div *ngIf="showTextfield == true">
             <button type="button" (click)="GenerateOTP()">Generate</button>
